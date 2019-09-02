@@ -1,0 +1,25 @@
+.log_in_modal
+  = form_with url: user_session_path, local: true do |f|
+    .log_in_modal__header
+      %h2 Log in
+    .sign_up_modal__contents
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          E-MAIL
+        .sign_up_modal__contents__box__form
+          = f.email_field :email,class: "user_form", autofocus: true, autocomplete: "email"
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          PASSWARD
+          - if @minimum_password_length
+            %em
+            (#{@minimum_password_length} characters minimum)
+        .sign_up_modal__contents__box__form
+          = f.password_field :password,class: "user_form", autocomplete: "current-password"
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          PASSWARD (COMFIRMATION)
+        .sign_up_modal__contents__box__form
+          = f.password_field :password_confirmation,class: "user_form", autocomplete: "current-password"
+      .sign_up_modal__contents__btn
+        = f.submit "Log In", class: "form_btn"

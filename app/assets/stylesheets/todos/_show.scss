@@ -1,0 +1,70 @@
+.todo_header{
+  height: 100px;
+  &__content{
+    margin: 20px 40px;
+    text-align: center;
+    height: 100%;
+    border-bottom: 1px solid grey;
+    position: relative;
+      &__title{
+      display: inline-block;
+      text-align: center;
+    }
+    &__user_name{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    &__user_icon{
+      font-size: 50px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    &__all_todos{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+    &__log_out{
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+  }
+}
+
+.todo_content{
+  &__tab_wrap{
+    width: 800px;
+    margin: 80px auto;
+    &__tab_area{
+      width:150px; 
+      margin:0 5px;
+      display:inline-block; padding:12px 0;
+      color:#999; background:#ddd;
+      text-align:center; font-size:13px;
+      cursor:pointer; transition:ease 0.2s opacity;
+      &__tab_label{
+        padding: 0 20px;
+      }
+    }
+    &__add_tab{
+      display: inline-block;
+      cursor: pointer;
+    }
+    &__todo_area{
+      margin:0 5px;
+      height: 200px;
+      background-color: lightgray;
+      &__todo_box{
+        padding: 10px 20px;
+        &__one_todo{
+          font-size: 20px;
+          margin: 10px;
+        }
+      }
+    }
+  }
+}

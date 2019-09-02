@@ -1,0 +1,82 @@
+.top-page{
+  // width:100vh;
+  height:100vh;
+  position: relative;
+  background: url('kal-visuals-aK4iPNYipnU-unsplash.jpg');
+  background-size: cover;
+  p{
+    font-size: 50px;
+    position: absolute;
+    top: 25%;
+    left:25%;
+    margin-top: -1.0rem;
+
+    animation-name: fadein;
+    animation-duration: 3s;
+  }
+  @keyframes fadein {
+    from {
+        opacity: 0;
+        // transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        // transform: translateY(0);
+    }
+  }  
+  width: 100%;
+  box-sizing: border-box;
+  // アニメーション設定{
+  font-size: 20px;
+  font-weight: bold;
+
+  .link{
+    display: table;
+    width: 100%;
+    height:100px;
+    position: absolute;
+    bottom: 0;
+    animation-name: fadein;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-fill-mode: backwards;
+
+    @keyframes fadein {
+      from {
+          opacity: 0;
+          transform: translateY(20px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+    }
+    &__log-in{
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+    padding-right: 30px;
+    &__login_btn{
+      text-decoration-line: none;
+      font-size: 30px;
+      color:black;
+      display: inline-block;
+      text-align: right;
+      cursor: pointer;
+      }
+    }
+    &__sign-up{
+      display: table-cell;
+      padding-left: 30px;
+      vertical-align: middle;
+      &__signup_btn{
+        display: inline-block;
+        text-decoration-line: none;
+        font-size: 30px;
+        color:black;
+        cursor: pointer;
+      }
+    }
+  }
+}
+

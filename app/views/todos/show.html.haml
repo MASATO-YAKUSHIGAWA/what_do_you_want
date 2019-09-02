@@ -1,0 +1,26 @@
+.todo_header
+  .todo_header__content
+    .todo_header__content__title
+      %h1 
+      =@user.want
+    .todo_header__content__user_name
+      = @user.name
+    .todo_header__content__user_icon
+      🤗
+    .todo_header__content__all_todos
+      = link_to "一覧", todos_path()
+    .todo_header__content__log_out
+      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
+
+.todo_content
+  .todo_content__tab_wrap
+    .todo_content__tab_wrap__tab_area
+      .todo_content__tab_wrap__tab_area__tab_label
+        tab
+    .todo_content__tab_wrap__add_tab
+      ➕
+    .todo_content__tab_wrap__todo_area
+      .todo_content__tab_wrap__todo_area__todo_box
+        .todo_content__tab_wrap__todo_area__todo_box__one_todo
+          = form_with model: @todo, local: true do |f|
+            = f.text_field :todo

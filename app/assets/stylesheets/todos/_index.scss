@@ -1,0 +1,44 @@
+.all_todos{
+  &__content{
+    width: 600px;
+    margin: 80px auto;
+    &__personal{
+      height: 80px;
+      padding: 20px;
+      &__box{
+        &__user_icon{
+          font-size: 50px;
+          display: inline-block;
+        }
+        &__user_want{
+          position: relative;
+          display: inline-block;
+          margin: 1.5em ;
+          padding: 7px 10px;
+          height: 60px;
+          vertical-align: middle;
+          min-width: 120px;
+          max-width: 100%;
+          color: #555;
+          font-size: 16px;
+          background: #e0edff;
+          border-radius: 15px;
+        }
+        &__user_want:before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 99%;
+          margin-left: -15px;
+          border: 15px solid transparent;
+          border-right: 15px solid #e0edff;
+        }          
+          &__content{
+            font-size: 30px;
+            vertical-align: middle;
+          }
+        
+      }
+    }
+  }
+}
