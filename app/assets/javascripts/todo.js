@@ -11,7 +11,11 @@ var html =  `<div class="todo_content__tab_wrap__todo_area__todo_box__display__o
               data-todo-id="${todo.id}">
               削除
               </div>
-            </div>`
+              <div class="todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__like">
+                <i class="fa fa-heart-o" data-todo-id="${todo.id}">
+                </i>
+              </div>
+              </div>`
 return html;
 }
 

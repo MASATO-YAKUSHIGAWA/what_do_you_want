@@ -29,6 +29,16 @@
                   = todo.content
                 .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__delete_btn{"data-todo-id":"#{todo.id}"}
                   削除
+                .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__like
+                  - if todo.liked_by?(current_user) #すでにいいねしていれば（todoモデルにて定義）
+                    %i.fa.fa-heart{"data-todo-id":"#{todo.id}"}
+                    .likes_count
+                      = todo.likes.count
+                  - else                            #まだいいねしていなければ
+                    %i.fa.fa-heart-o{"data-todo-id":"#{todo.id}"}
+                    .likes_count
+                      = todo.likes.count
+                      
         .todo_content__tab_wrap__todo_area__todo_box__create_todo
           = form_with model: @todo,url: { controller: 'todos', action: 'create' }, local: true do |f|
             = f.text_field :content,class: "todo_form"

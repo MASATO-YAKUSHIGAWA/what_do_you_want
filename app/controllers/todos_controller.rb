@@ -1,20 +1,20 @@
 class TodosController < ApplicationController
   # before_action :move_to_index
 
-  def show
+  def show #top page
     @user = User.find(current_user.id)
     @todo = Todo.new
     @todos = Todo.all
   end
 
-  def index
+  def index #一覧
   end
 
   def create
     @todo = Todo.new(todo_params)
     if @todo.save
       respond_to do |format|
-        format.json
+      format.json
       end
     end
   end
@@ -23,7 +23,7 @@ class TodosController < ApplicationController
     @todo = Todo.find(params[:id])
     if @todo.destroy
       respond_to do |format|
-        format.json
+      format.json
       end
     end
   end
