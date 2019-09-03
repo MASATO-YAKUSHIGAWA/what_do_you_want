@@ -71,6 +71,30 @@
               display: inline-block;
               cursor: pointer;
             }
+            &__like{
+              display: inline-block;
+              cursor: pointer;
+              .fa-heart-o:hover{
+                color: red;
+                -webkit-transition: 0.1s ease-in-out;
+                -moz-transition: 0.1s ease-in-out;
+                -o-transition: 0.1s ease-in-out;
+                transition: 0.1s ease-in-out; 
+              }
+              .fa-heart{
+                color: red;
+              }
+              .fa-heart:hover{
+                color: white;
+                -webkit-transition: 0.1s ease-in-out;
+                -moz-transition: 0.1s ease-in-out;
+                -o-transition: 0.1s ease-in-out;
+                transition: 0.1s ease-in-out; 
+              }
+              .likes_count{
+                display: inline-block;
+              }
+            }
           }
         }
         &__create_todo{
