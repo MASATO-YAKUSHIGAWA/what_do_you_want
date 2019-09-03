@@ -21,6 +21,14 @@
       ➕
     .todo_content__tab_wrap__todo_area
       .todo_content__tab_wrap__todo_area__todo_box
-        .todo_content__tab_wrap__todo_area__todo_box__one_todo
-          = form_with model: @todo, local: true do |f|
-            = f.text_field :todo
+        - if @todos
+          .todo_content__tab_wrap__todo_area__todo_box__display
+            - @todos.each do |todo|
+              .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap{"data-todo-id":"#{todo.id}"}
+                .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__content
+                  = todo.content
+                .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__delete_btn{"data-todo-id":"#{todo.id}"}
+                  削除
+        .todo_content__tab_wrap__todo_area__todo_box__create_todo
+          = form_with model: @todo,url: { controller: 'todos', action: 'create' }, local: true do |f|
+            = f.text_field :content,class: "todo_form"
