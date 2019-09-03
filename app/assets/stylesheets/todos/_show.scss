@@ -56,13 +56,24 @@
     }
     &__todo_area{
       margin:0 5px;
-      height: 200px;
+      // height: 200px;
       background-color: lightgray;
       &__todo_box{
         padding: 10px 20px;
-        &__one_todo{
-          font-size: 20px;
-          margin: 10px;
+        &__display{
+          &__one_todo_wrap{
+            font-size: 20px;
+            margin: 10px;
+            &__content{
+              display: inline-block;
+            }
+            &__delete_btn{
+              display: inline-block;
+              cursor: pointer;
+            }
+          }
+        }
+        &__create_todo{
         }
       }
     }
