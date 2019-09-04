@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :todos
   resources :users
   resources :likes
+  resources :titles
 end
 
