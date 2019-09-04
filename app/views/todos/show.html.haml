@@ -14,15 +14,16 @@
 
 .todo_content
   .todo_content__tab_wrap
-    .todo_content__tab_wrap__add_tab
+    .add_tab
       ➕
-    - @user_title.each do |user_title|
-      .todo_content__tab_wrap__tab_area
-        .todo_content__tab_wrap__tab_area__tab_label
+    .todo_content__tab_wrap__tab_area
+      - @user_title.each do |user_title|
+        %a(href="#tab-#{user_title.id}"){class: "todo_content__tab_wrap__tab_area__tab_label"}
           = user_title.title
           - title_id = user_title.id
-      .todo_content__tab_wrap__todo_area
-        .todo_content__tab_wrap__todo_area__todo_box
+    .todo_content__tab_wrap__todo_area
+      - @user_title.each do |user_title|
+        .todo_content__tab_wrap__todo_area__todo_box{id: "tab-#{user_title.id}"}
           - if @todos
             .todo_content__tab_wrap__todo_area__todo_box__display{class: "add#{user_title.id}"}
               - @todos.each do |todo|
@@ -42,9 +43,9 @@
                         .likes_count
                           = todo.likes.count
                       
-        .todo_content__tab_wrap__todo_area__todo_box__create_todo{"data-title-id":"#{user_title.id}"}
-          = form_with model: @todo,url: { controller: 'todos', action: 'create' }, local: true do |f|
-            = f.text_field :content,class: "todo_form",id: "todo_content#{user_title.id}"
+            .todo_content__tab_wrap__todo_area__todo_box__create_todo{"data-title-id":"#{user_title.id}"}
+              = form_with model: @todo,url: { controller: 'todos', action: 'create' }, local: true do |f|
+                = f.text_field :content,class: "todo_form",id: "todo_content#{user_title.id}"
 
 .title_modal
   = form_with model: @title, url: {controller: "titles", action: "create"}, local: true do |f|

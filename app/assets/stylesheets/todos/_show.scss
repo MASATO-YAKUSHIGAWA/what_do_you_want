@@ -39,19 +39,42 @@
   &__tab_wrap{
     width: 800px;
     margin: 80px auto;
+    .add_tab{
+      display: inline-block;
+    }
     &__tab_area{
-      width:150px; 
-      margin:0 5px;
-      display:inline-block; 
-      padding:12px 0;
-      color:#999; 
-      background:#ddd;
-      text-align:center; 
-      font-size:13px;
-      cursor:pointer; 
-      transition:ease 0.2s opacity;
+      font-size: 0;
+      display: inline-block;
+      // width:150px; 
+      // margin:0 5px;
+      // display:inline-block; 
+      // padding:12px 0;
+      // color:#999; 
+      // background:#ddd;
+      // text-align:center; 
+      // font-size:13px;
+      // cursor:pointer; 
+      // transition:ease 0.2s opacity;
       &__tab_label{
         padding: 0 20px;
+        width:150px; 
+        margin:0 5px;
+        display:inline-block; 
+        padding:12px 0;
+        color:#999; 
+        background:white;
+        text-align:center; 
+        font-size:13px;
+        cursor:pointer; 
+        transition:ease 0.2s opacity;
+      }
+      a.active{
+        background:#ddd;
+        color: black;
+        text-decoration-line: none;
+      }
+      a{
+        text-decoration-line: none;
       }
     }
     &__add_tab{
