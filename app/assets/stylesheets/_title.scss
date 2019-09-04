@@ -1,0 +1,39 @@
+.title_modal{
+  z-index: 2222;
+  display:none;
+  max-width: none;
+  width: 300px;
+  margin: 20px auto;
+  text-align: center;
+  position: fixed;
+  background: #fff;
+  &__box{
+    padding: 10px;
+    line-height: 1.5;
+    &__content{
+      &__form{
+      }
+    }
+  }
+  &__select{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &--cancel{
+      width: 50%;
+    }
+    &--done{
+      width: 50%;
+    }
+  }
+}
+.title_modal_bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1111;
+  display: none;
+  width: 100%;
+  height: 120%;
+  background-color:rgba(0,0,0,0.7);
+}

@@ -3,8 +3,11 @@ class TodosController < ApplicationController
 
   def show #top page
     @user = User.find(current_user.id)
-    @todo = Todo.new
-    @todos = Todo.all
+    @todo = Todo.new #todo新規作成
+    @todos = Todo.where(user_id: current_user.id)
+
+    @title = Title.new #タイトル新規作成
+    @user_title = Title.where(user_id: current_user.id)
   end
 
   def index #一覧
@@ -34,7 +37,7 @@ class TodosController < ApplicationController
   end
 
   def todo_params
-    params.require(:todo).permit(:content).merge(user_id: current_user.id )
+    params.require(:todo).permit(:content, :title_id).merge(user_id: current_user.id)
   end
 
 end

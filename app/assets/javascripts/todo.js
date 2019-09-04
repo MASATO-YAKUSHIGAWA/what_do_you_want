@@ -14,29 +14,40 @@ var html =  `<div class="todo_content__tab_wrap__todo_area__todo_box__display__o
               <div class="todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__like">
                 <i class="fa fa-heart-o" data-todo-id="${todo.id}">
                 </i>
+                <div class="likes_count">
+                ${todo.likes_count}
+                </div>
               </div>
               </div>`
 return html;
 }
 
   //テキストボックスに変更を加えたら発動
-  $('.todo_form').change('input[type="text"]', function() {
-    $.ajax({
-      url: "/todos", 
-      type: 'POST',
-      data: {"todo[content]":$('#todo_content').val()}, //入力された値の取得 {'name':&('#id').val()}
-      dataType: 'json',
+  // $(document).on("click", ".todo_content__tab_wrap__todo_area__todo_box__create_todo",function(){
+  //   var title_id = $(this).data("title-id")
+  //   var form = $(this).children().children(`#todo_content${title_id}`)
+  //   console.log(form)
+    $(document).on("change",'input[type="text"]', function() {
+      var parent = $(this).parent().parent()
+      var title_id = $(parent).data("title-id")
+      $.ajax({
+        url: "/todos", 
+        type: 'POST',
+        data: {"todo[content]":$(`#todo_content${title_id}`).val(), "todo[title_id]":title_id}, //入力された値の取得 {'name':&('#id').val()}
+        dataType: 'json',
+      })
+      .done(function(data) { //jbuilderからデータを受信
+        console.log(data)
+        console.log("成功");
+        $(`.todo_form`).val("") //text_areaを空白へ
+        var html = buildHTML(data)
+        $(`.add${title_id}`).append(html)
+      })
+      .fail(function(data) {
+        console.log("失敗");
+      });  
     })
-    .done(function(data) { //jbuilderからデータを受信
-      console.log("成功");
-      $(".todo_form").val("") //text_areaを空白へ
-      var html = buildHTML(data)
-      $(".todo_content__tab_wrap__todo_area__todo_box__display").append(html)
-     })
-    .fail(function(data) {
-      console.log("失敗");
-    });  
-  })
+  // })
 
   // 削除機能
   $(document).on("click", ".todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__delete_btn",function(){

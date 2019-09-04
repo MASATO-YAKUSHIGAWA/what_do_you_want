@@ -14,31 +14,47 @@
 
 .todo_content
   .todo_content__tab_wrap
-    .todo_content__tab_wrap__tab_area
-      .todo_content__tab_wrap__tab_area__tab_label
-        tab
     .todo_content__tab_wrap__add_tab
       ➕
-    .todo_content__tab_wrap__todo_area
-      .todo_content__tab_wrap__todo_area__todo_box
-        - if @todos
-          .todo_content__tab_wrap__todo_area__todo_box__display
-            - @todos.each do |todo|
-              .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap{"data-todo-id":"#{todo.id}"}
-                .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__content
-                  = todo.content
-                .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__delete_btn{"data-todo-id":"#{todo.id}"}
-                  削除
-                .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__like
-                  - if todo.liked_by?(current_user) #すでにいいねしていれば（todoモデルにて定義）
-                    %i.fa.fa-heart{"data-todo-id":"#{todo.id}"}
-                    .likes_count
-                      = todo.likes.count
-                  - else                            #まだいいねしていなければ
-                    %i.fa.fa-heart-o{"data-todo-id":"#{todo.id}"}
-                    .likes_count
-                      = todo.likes.count
+    - @user_title.each do |user_title|
+      .todo_content__tab_wrap__tab_area
+        .todo_content__tab_wrap__tab_area__tab_label
+          = user_title.title
+          - title_id = user_title.id
+      .todo_content__tab_wrap__todo_area
+        .todo_content__tab_wrap__todo_area__todo_box
+          - if @todos
+            .todo_content__tab_wrap__todo_area__todo_box__display{class: "add#{user_title.id}"}
+              - @todos.each do |todo|
+                - if todo.title_id == user_title.id
+                  .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap{"data-todo-id":"#{todo.id}"}
+                    .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__content
+                      = todo.content
+                    .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__delete_btn{"data-todo-id":"#{todo.id}"}
+                      削除
+                    .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__like
+                      - if todo.liked_by?(current_user) #すでにいいねしていれば（todoモデルにて定義）
+                        %i.fa.fa-heart{"data-todo-id":"#{todo.id}"}
+                        .likes_count
+                          = todo.likes.count
+                      - else                            #まだいいねしていなければ
+                        %i.fa.fa-heart-o{"data-todo-id":"#{todo.id}"}
+                        .likes_count
+                          = todo.likes.count
                       
-        .todo_content__tab_wrap__todo_area__todo_box__create_todo
+        .todo_content__tab_wrap__todo_area__todo_box__create_todo{"data-title-id":"#{user_title.id}"}
           = form_with model: @todo,url: { controller: 'todos', action: 'create' }, local: true do |f|
-            = f.text_field :content,class: "todo_form"
+            = f.text_field :content,class: "todo_form",id: "todo_content#{user_title.id}"
+
+.title_modal
+  = form_with model: @title, url: {controller: "titles", action: "create"}, local: true do |f|
+    .title_modal__box
+      .title_modal__box__content
+        タイトルを入力してください
+        .title_modal__box__content__form
+          = f.text_field :title
+    .title_modal__select
+      .title_modal__select--cancel
+        キャンセル
+      .title_modal__select--done
+        = f.submit "完了",{class: "done-btn"}
