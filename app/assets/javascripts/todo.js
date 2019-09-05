@@ -1,4 +1,4 @@
-$(function() {
+$(document).on("turbolinks:load", function(){
  
 function buildHTML (todo){
 var content = todo.content
@@ -20,6 +20,12 @@ var html =  `<div class="todo_content__tab_wrap__todo_area__todo_box__display__o
               </div>
               </div>`
 return html;
+}
+
+function build_edit_HTML (todo){
+  var content = todo.content
+  var edit_html =`${content}`
+  return edit_html;
 }
 
   //テキストボックスに変更を加えたら発動
@@ -66,6 +72,39 @@ return html;
     })
     .fail(function(){
       console.log("失敗")
+    })
+  })
+
+  // 編集機能
+  $(".todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__content").on("dblclick", function(){ //pタグをダブルクリックすれば発火
+    console.log(this)
+    var content = $(this)
+    var input = $("<input>").attr("type","text").val($(this).text());
+    $(this).html(input);  //pタグをinput要素へ変換
+    console.log(this)
+
+    $(this).on("change",'input[type="text"]', function() { //inputに変更が加われば発火
+      console.log($(this).val())
+      var parent = $(this).parent().parent()
+      var todo_id = $(parent).data("todo-id")
+      var title_id = $(parent).data("title-id")
+      console.log(todo_id)
+      $.ajax({
+        url: `/todos/${todo_id}`, 
+        type: 'patch',
+        data: {"todo[content]":$(this).val()}, //入力された値の取得 {'name':&('#id').val()}
+        dataType: 'json',
+      })
+      .done(function(data){
+        console.log("成功")
+        console.log(data)
+        var edit_html = build_edit_HTML(data)
+        $(content).html(edit_html)
+
+      })
+      .fail(function(){
+        console.log("失敗")
+      })
     })
   })
 })
