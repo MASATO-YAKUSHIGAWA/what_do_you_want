@@ -11,6 +11,7 @@ class TodosController < ApplicationController
   end
 
   def index #一覧
+    @user = User.find(current_user.id)
   end
 
   def create
@@ -25,6 +26,15 @@ class TodosController < ApplicationController
   def destroy
     @todo = Todo.find(params[:id])
     if @todo.destroy
+      respond_to do |format|
+      format.json
+      end
+    end
+  end
+
+  def update
+    @todo = Todo.find(params[:id])
+    if @todo.update(todo_params)
       respond_to do |format|
       format.json
       end

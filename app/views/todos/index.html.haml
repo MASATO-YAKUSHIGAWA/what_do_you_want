@@ -12,7 +12,20 @@
       .all_todos__content__personal__box
         .all_todos__content__personal__box__user_icon
           😄
+        .all_todos__content__personal__box__user_name
+          っっっm
         .all_todos__content__personal__box__user_want
           .all_todos__content__personal__box__user_want__content
-            楽しいいいいいいいいいいいい
+            = @user.want
 
+
+  .all-user
+    .user
+      %li.user-block
+        .one-user
+          -# = user.name
+        .one-user-want
+          .balloon1
+            -# = user.want
+            -# = link_to mypage_path(user.id), "/users/all/#{user.id}", class: "user-btn", method: :get 
+          .icon

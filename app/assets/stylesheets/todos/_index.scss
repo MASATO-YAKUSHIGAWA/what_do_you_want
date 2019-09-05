@@ -6,9 +6,15 @@
       height: 80px;
       padding: 20px;
       &__box{
+        position: relative;
         &__user_icon{
           font-size: 50px;
           display: inline-block;
+        }
+        &__user_name{
+          position: absolute;
+          bottom: 20%;
+          left: 0;
         }
         &__user_want{
           position: relative;
@@ -41,4 +47,93 @@
       }
     }
   }
+}
+
+.all-user{
+  position: relative;
+  display: inline-block;
+}
+
+.user-block{
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+}
+.user{
+  list-style: none;
+  display: inline-block;
+
+
+}
+
+.one-user{
+  position: absolute;
+  bottom:0;
+  left: 500px;
+
+}
+.one-user-want{
+  list-style: none;
+  display: inline-block;
+
+
+
+  .balloon1{
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    color:black;
+    background-color:white;
+    margin-left: 600px;          /* 左に余白を設ける */
+    margin-right: 80px;
+    height: 40px;
+    line-height: 40px;
+    transition-duration: 0.5s; /*変化の時間*/
+    
+  }
+  .balloon1 a {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+  }
+  .balloon1:hover{
+    transform: scale(1.2);
+    }
+  /* 画像 - 絶対配置で左上に配置 */
+  // .balloon1 .icon{
+  //   position: absolute;
+  //   left: -200px;
+  //   top: 0;
+  // }
+  /* 三角アイコン */
+  .balloon1::before{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    left: -15px;
+    top: 20px;
+    border-right: 15px solid white;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+  }
+}
+
+.icon {
+  display: block;
+  color: aqua;
+  background: url('アイコン.png');
+  background-size: cover;
+  width: 70px;
+  height:70px;
+  position: absolute;
+  left: 480px;
+  top: 0px;
+
 }
