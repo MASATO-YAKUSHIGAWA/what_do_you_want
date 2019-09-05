@@ -28,6 +28,7 @@ $(function() {
     });
   })
 
+
 function build_tab_HTML (title){ //タブの追加html
 var tab_html =  `<a class="todo_content__tab_wrap__tab_area__tab_label active" href="#tab-${title.id}">
                 ${title.name}
@@ -49,6 +50,7 @@ var todo_html = `<div class="todo_content__tab_wrap__todo_area__todo_box" id="ta
 return todo_html;
 }
 
+// タブ（タイトル）追加の記述
   $(document).on("click", ".done-btn",function(e){
     e.preventDefault();
     $.ajax({
@@ -66,6 +68,18 @@ return todo_html;
       $('.todo_content__tab_wrap__tab_area a').removeClass('active');
       $(`.todo_content__tab_wrap__tab_area`).append(tab_html) //タブの追加
       $(`.todo_content__tab_wrap__todo_area`).append(todo_html) //タブの追加
+
+      var tab = $(".todo_content__tab_wrap__tab_area").children("a").length //タブのaタグの数を取得
+      console.log(tab)
+      if(tab >= 1 && tab <= 4){
+        var new_position = 70 + (tab * 160)
+        $(".add_tab").css("left",new_position+ "px")
+        $(".tab_balloon").css("display","none")
+      }
+      if(tab >= 5){
+        $(".add_tab").css("display", "none")
+        $(".tab_balloon").css("display","none")
+      }
 
       $('.todo_content__tab_wrap__todo_area > div').hide(); //todo_area以下のdiv要素取得し、非表示
       $('.todo_content__tab_wrap__tab_area a').click(function () { //hrefに設定したidを取得
