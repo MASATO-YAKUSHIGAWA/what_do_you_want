@@ -1,31 +1,28 @@
 .todo_header
   .todo_header__content
     .todo_header__content__title
-      %h1　みんなのやることリスト
+      %h1　みんなのやりたいことリスト
     .todo_header__content__user_name
     .todo_header__content__user_icon
     .todo_header__content__all_todos
+    .todo_header__content__back
+      = link_to "← back", root_path
 
 .all_todos
   .all_todos__content
-    .all_todos__content__personal
-      .all_todos__content__personal__box
-        .all_todos__content__personal__box__user_icon
-          😄
-        .all_todos__content__personal__box__user_name
-          っっっm
-        .all_todos__content__personal__box__user_want
-          .all_todos__content__personal__box__user_want__content
-            = @user.want
+    - @users.each do |user|
+      .all_todos__content__personal
+        .all_todos__content__personal__user_name
+          %p= user.name
+        .all_todos__content__personal__user_icon
+          .all_todos__content__personal__user_icon__img
+            = image_tag "unnamed.jpg"
+        .all_todos__content__personal__index
+          .all_todos__content__personal__index__user_want
+            .all_todos__content__personal__index__user_want__content
+              %h2= user.want
+          .all_todos__content__personal__index__description
+            説明文、コメント、プロフィール
+          .all_todos__content__personal__index__detail_btn
+            more
 
-
-  .all-user
-    .user
-      %li.user-block
-        .one-user
-          -# = user.name
-        .one-user-want
-          .balloon1
-            -# = user.want
-            -# = link_to mypage_path(user.id), "/users/all/#{user.id}", class: "user-btn", method: :get 
-          .icon

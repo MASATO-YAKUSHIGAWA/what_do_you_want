@@ -1,139 +1,113 @@
-.all_todos{
+.todo_header{
   &__content{
-    width: 600px;
-    margin: 80px auto;
-    &__personal{
-      height: 80px;
-      padding: 20px;
-      &__box{
-        position: relative;
-        &__user_icon{
-          font-size: 50px;
-          display: inline-block;
-        }
-        &__user_name{
-          position: absolute;
-          bottom: 20%;
-          left: 0;
-        }
-        &__user_want{
-          position: relative;
-          display: inline-block;
-          margin: 1.5em ;
-          padding: 7px 10px;
-          height: 60px;
-          vertical-align: middle;
-          min-width: 120px;
-          max-width: 100%;
-          color: #555;
-          font-size: 16px;
-          background: #e0edff;
-          border-radius: 15px;
-        }
-        &__user_want:before {
-          content: "";
-          position: absolute;
-          top: 50%;
-          right: 99%;
-          margin-left: -15px;
-          border: 15px solid transparent;
-          border-right: 15px solid #e0edff;
-        }          
-          &__content{
-            font-size: 30px;
-            vertical-align: middle;
-          }
-        
+    position: relative;
+    &__back{
+      position: absolute;
+      bottom: 0;
+      left:0;
+      a {
+        text-decoration-line: none;
+        color: #000;
+      }
+      a:hover{
+        text-decoration-line: underline;
       }
     }
   }
 }
 
-.all-user{
-  position: relative;
-  display: inline-block;
-}
-
-.user-block{
-  position: relative;
-  margin-top: 20px;
-  margin-bottom: 10px;
-
-}
-.user{
-  list-style: none;
-  display: inline-block;
-
-
-}
-
-.one-user{
-  position: absolute;
-  bottom:0;
-  left: 500px;
-
-}
-.one-user-want{
-  list-style: none;
-  display: inline-block;
-
-
-
-  .balloon1{
-    position: relative;
-    padding: 20px;
-    border-radius: 10px;
-    color:black;
-    background-color:white;
-    margin-left: 600px;          /* 左に余白を設ける */
-    margin-right: 80px;
-    height: 40px;
-    line-height: 40px;
-    transition-duration: 0.5s; /*変化の時間*/
-    
-  }
-  .balloon1 a {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: white;
-  }
-  .balloon1:hover{
-    transform: scale(1.2);
+.all_todos{
+  &__content{
+    width: 800px;
+    margin: 20px auto 0;
+    padding: 0 40px;
+    &__personal{
+      margin-bottom: 50px;
+      border-bottom: 1px solid grey;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      &__user_icon{
+        font-size: 50px;
+        width: 300px;
+        height: 350px;
+        margin: 20px 0 20px 40px;
+        border: 1px solid black;
+        box-shadow: 5px 15px 50px rgba(0,0,0,.4);
+        &__img img{
+          object-fit: cover;
+          width: 300px;
+          height: 350px;
+        }
+      }
+      &__user_name{
+        transform: rotate(-90deg) translateX(-50%);
+        font-size: 20px;
+        font-weight: bold;
+        transform-origin: top left;
+        line-height: 20px;
+      }
+      &__index{
+        vertical-align: top;
+        margin-left: 20px;
+        margin-top: 20px;
+        height: 350px;
+        &__user_want{
+          vertical-align: top;
+          width: 400px;
+          &__content{
+            color: #57ad57;
+            font-size: 50px;
+            overflow-wrap: break-word;
+          }
+        }
+        &__description{
+          margin-top: 30px;
+          padding-top: 10px;
+          width: 100%;
+          position: relative;
+        }
+        &__description::before{
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          float: left;
+          display: block;
+          margin-right: 10.1484%;
+          width: 26.56773%;
+          height: 3px;
+          background-color: #000;
+          }
+          &__detail_btn{
+          background-color: #57ad57;
+          width:100px;
+          height:60px;
+          text-align: center;
+          vertical-align: bottom;
+          position: absolute;
+          bottom: 20px;
+          right: 80px;
+          line-height: 60px;
+          color: white;
+          box-shadow: 5px 15px 50px rgba(0,0,0,.4);
+        }
+      }
     }
-  /* 画像 - 絶対配置で左上に配置 */
-  // .balloon1 .icon{
-  //   position: absolute;
-  //   left: -200px;
-  //   top: 0;
-  // }
-  /* 三角アイコン */
-  .balloon1::before{
-    content: '';
-    position: absolute;
-    display: block;
-    width: 0;
-    height: 0;
-    left: -15px;
-    top: 20px;
-    border-right: 15px solid white;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
   }
 }
-
-.icon {
-  display: block;
-  color: aqua;
-  background: url('アイコン.png');
-  background-size: cover;
-  width: 70px;
-  height:70px;
+.all_todos__content__personal:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+.all_todos__content__personal:nth-child(odd) .all_todos__content__personal__index__detail_btn{
   position: absolute;
-  left: 480px;
-  top: 0px;
+  left:80px;
+}
 
+
+h2{
+  font-family: 'GT Walsheim';
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
 }
