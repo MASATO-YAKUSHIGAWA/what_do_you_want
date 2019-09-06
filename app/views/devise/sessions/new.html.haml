@@ -1,5 +1,5 @@
 .log_in_modal
-  = form_with url: user_session_path, local: true do |f|
+  = form_with model: @user, url: user_session_path, local: true do |f|
     .log_in_modal__header
       %h2 Log in
     .sign_up_modal__contents

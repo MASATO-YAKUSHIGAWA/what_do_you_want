@@ -15,6 +15,11 @@
           = f.email_field :email,class: "user_form", autofocus: true, autocomplete: "email"
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
+          AVATAR
+        .sign_up_modal__contents__box__form
+          = f.file_field :avatar,class: "user_form"
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
           PASSWARD
           - if @minimum_password_length
             %em

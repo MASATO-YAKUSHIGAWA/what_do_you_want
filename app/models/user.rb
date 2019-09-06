@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :postend
   has_many :titles
 
+  has_one_attached :avatar
+  
 end

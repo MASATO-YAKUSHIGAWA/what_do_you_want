@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root "todos#show"
   devise_for :users
+  root "todos#show"
   resources :todos
   resources :users
   resources :likes

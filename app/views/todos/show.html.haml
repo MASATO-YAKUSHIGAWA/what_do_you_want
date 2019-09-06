@@ -6,7 +6,7 @@
     .todo_header__content__user_name
       = @user.name
     .todo_header__content__user_icon
-      🤗
+      = image_tag(@user.avatar.variant(resize: "110x110"))
     .todo_header__content__all_todos
       = link_to "一覧", todos_path()
     .todo_header__content__log_out
