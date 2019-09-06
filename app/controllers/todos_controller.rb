@@ -12,6 +12,8 @@ class TodosController < ApplicationController
 
   def index #一覧
     @user = User.find(current_user.id)
+    @users = User.all
+    @likes = Todo.all
   end
 
   def create
