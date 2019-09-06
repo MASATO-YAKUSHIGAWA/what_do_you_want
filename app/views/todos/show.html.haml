@@ -16,9 +16,11 @@
   .todo_content__tab_wrap
     .todo_content__tab_wrap__tab_area
       - @user_title.each do |user_title|
-        %a(href="#tab-#{user_title.id}"){class: "todo_content__tab_wrap__tab_area__tab_label"}
+        %a(href="#tab-#{user_title.id}"){class: "todo_content__tab_wrap__tab_area__tab_label",id: "tab-#{user_title.id}"}
           = user_title.title
           - title_id = user_title.id
+        .delete_tab{id: "tab-#{user_title.id}","data-title-id":"#{user_title.id}"}
+          %p×
     .add_tab
       ➕
     .tab_balloon

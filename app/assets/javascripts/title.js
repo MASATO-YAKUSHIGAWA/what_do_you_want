@@ -30,9 +30,13 @@ $(function() {
 
 
 function build_tab_HTML (title){ //タブの追加html
-var tab_html =  `<a class="todo_content__tab_wrap__tab_area__tab_label active" href="#tab-${title.id}">
+var tab_html =  `<a class="todo_content__tab_wrap__tab_area__tab_label active" href="#tab-${title.id}" id="tab-${title.id}">
                 ${title.name}
-                </a>`
+                </a>
+                <div class="delete_tab" data-title-id="${title.id}" id="tab-${title.id}">
+                <p>×</p>
+                </div>
+                `
 return tab_html;
 }
 function build_todo_HTML (title){ //todoの追加html
@@ -63,9 +67,9 @@ return todo_html;
       console.log(data)
       console.log("成功")
       $(`#title_title`).val("")
+      $('.todo_content__tab_wrap__tab_area a').removeClass('active');
       var tab_html = build_tab_HTML(data)
       var todo_html = build_todo_HTML(data)
-      $('.todo_content__tab_wrap__tab_area a').removeClass('active');
       $(`.todo_content__tab_wrap__tab_area`).append(tab_html) //タブの追加
       $(`.todo_content__tab_wrap__todo_area`).append(todo_html) //タブの追加
 
@@ -84,10 +88,8 @@ return todo_html;
       $('.todo_content__tab_wrap__todo_area > div').hide(); //todo_area以下のdiv要素取得し、非表示
       $('.todo_content__tab_wrap__tab_area a').click(function () { //hrefに設定したidを取得
           $('.todo_content__tab_wrap__todo_area > div').hide().filter(this.hash).fadeIn(); //hashにてtodo_areaのid取得し、表示
-        console.log(this.hash)
           $('.todo_content__tab_wrap__tab_area a').removeClass('active');
           $(this).addClass('active');
-          console.log(this)
           return false;
       })
       .filter(':eq(0)').click(); //初期設定は一番最初のタブ

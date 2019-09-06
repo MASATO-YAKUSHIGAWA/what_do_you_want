@@ -90,9 +90,9 @@
       // cursor:pointer; 
       // transition:ease 0.2s opacity;
       &__tab_label{
+        position: relative;
         padding: 0 20px;
-        width:150px; 
-        margin:0 5px;
+        width:143.8px; 
         display:inline-block; 
         padding:12px 0;
         color:#999; 
@@ -101,8 +101,21 @@
         font-size:13px;
         cursor:pointer; 
         transition:ease 0.2s opacity;
+        // .delete_tab{
+        //   display: inline-block;
+        //   z-index: 9999;
+        //   cursor: pointer;
+        //   color: black;
+        //   font-size: 14px;
+        //   position: absolute;
+        //   top:0;
+        //   left:10px;
+        // }
+        // .delete_tab:hover{
+        //   color: red;
+        // }
       }
-      a.active{
+      .todo_content__tab_wrap__tab_area__tab_label.active{
         background:#ddd;
         color: black;
         text-decoration-line: none;
@@ -110,13 +123,40 @@
       a{
         text-decoration-line: none;
       }
-    }
+      .delete_tab{
+        margin-right: 0.5em;
+        display: inline-block;
+        height: 43.98px;
+        z-index: 9999;
+        color: white;
+        font-size: 14px;
+        vertical-align: top;
+        background:white;
+        transition:ease 0.2s opacity;
+        pointer-events: none;
+      }
+      .delete_tab p:hover{
+        color: red;
+        cursor: pointer;
+      }
+      .delete_tab.active{
+        pointer-events: auto;
+        background:#ddd;
+        color: black;
+        p:hover{
+          color: red;
+          cursor: pointer;
+        }
+      }
+      
+  }
+
+
     &__add_tab{
       display: inline-block;
       cursor: pointer;
     }
     &__todo_area{
-      margin:0 5px;
       // height: 200px;
       background-color: lightgray;
       &__todo_box{
