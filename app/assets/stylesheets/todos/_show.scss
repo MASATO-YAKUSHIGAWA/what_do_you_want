@@ -25,11 +25,25 @@
       position: absolute;
       right: 0;
       bottom: 0;
+      a {
+        text-decoration-line: none;
+        color: black;
+      }
+      a:hover{
+        text-decoration-line: underline;
+      }
     }
     &__log_out{
       position: absolute;
       right: 0;
       top: 0;
+      a {
+        text-decoration-line: none;
+        color: black;
+      }
+      a:hover{
+        text-decoration-line: underline;
+      }
     }
 
   }

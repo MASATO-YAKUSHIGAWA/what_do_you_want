@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  # before_action :move_to_index
+  before_action :move_to_index
 
   def show #top page
     @user = User.find(current_user.id)

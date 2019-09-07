@@ -3,7 +3,75 @@
   .link
     .link__log-in
       .link__log-in__login_btn
-        = link_to "LOG-IN","/users/sign_in"
+        LOG-IN
     .link__sign-up
       .link__sign-up__signup_btn
-        = link_to "SIGN-UP","/users/sign_up"
+        SIGN-UP
+
+.sign_up_modal
+  = form_with model: @user, url: users_path, method: :post, id: 'new_user', class: 'new_user', local: true do |f|
+    .sign_up_modal__header
+      %h2 Sign up
+    .sign_up_modal__contents
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          NAME
+        .sign_up_modal__contents__box__form
+          = f.text_field :name, class: "user_form", autofocus: true
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          E-MAIL
+        .sign_up_modal__contents__box__form
+          = f.email_field :email,class: "user_form", autofocus: true, autocomplete: "email"
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          AVATAR
+        .sign_up_modal__contents__box__form
+          = f.file_field :avatar,class: "user_form"
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          PASSWARD
+          - if @minimum_password_length
+            %em
+            (#{@minimum_password_length} characters minimum)
+        .sign_up_modal__contents__box__form
+          = f.password_field :password,class: "user_form", autocomplete: "new-password"
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          PASSWARD (COMFIRMATION)
+        .sign_up_modal__contents__box__form
+          = f.password_field :password_confirmation,class: "user_form", autocomplete: "new-password"
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          WHAT DO YOU WANT?
+        .sign_up_modal__contents__box__form
+          = f.text_field :want,class: "user_form", autofocus: true
+          = f.hidden_field :remember_token
+      .sign_up_modal__contents__btn
+        = f.submit "Sign up", class: "form_btn"
+
+.log_in_modal
+  = form_with url: login_path, local: true do |f|
+    .log_in_modal__header
+      %h2 Log in
+    .sign_up_modal__contents
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          E-MAIL
+        .sign_up_modal__contents__box__form
+          = f.email_field :email,class: "user_form", autofocus: true, autocomplete: "email", name: "session[email]"
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          PASSWARD
+          - if @minimum_password_length
+            %em
+            (#{@minimum_password_length} characters minimum)
+        .sign_up_modal__contents__box__form
+          = f.password_field :password,class: "user_form", autocomplete: "current-password", name: "session[password]"
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          PASSWARD (COMFIRMATION)
+        .sign_up_modal__contents__box__form
+          = f.password_field :password_confirmation,class: "user_form", autocomplete: "current-password"
+      .sign_up_modal__contents__btn
+        = f.submit "Log In", class: "form_btn"

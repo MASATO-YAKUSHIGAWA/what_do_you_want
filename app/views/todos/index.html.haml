@@ -16,7 +16,7 @@
           %p= user.name
         .all_todos__content__personal__user_icon
           .all_todos__content__personal__user_icon__img
-            = image_tag "unnamed.jpg"
+            = image_tag(user.avatar.variant(resize: "300x350"))
         .all_todos__content__personal__index
           .all_todos__content__personal__index__user_want
             .all_todos__content__personal__index__user_want__content

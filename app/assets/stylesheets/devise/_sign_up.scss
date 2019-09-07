@@ -1,21 +1,23 @@
 .sign_up_modal{
-  // display: none;
-  // position: fixed;
-  // z-index: 1111;
+  display: none;
+  position: fixed;
+  z-index: 2222;
   width: 700px;
   margin: 0 auto;
   &__header{
       text-align: center;
       font-size: 30px;
-      padding-top: 20px;
+      padding-top: 10px;
+      color: white;
   }
   &__contents{
-    padding: 40px 40px 64px;
+    padding: 20px 20px 30px;
     text-align: center;
     &__box{
       margin-bottom: 20px;
       &__title{
         font-weight:bold;
+        color: white;
       }
       &__form{
         .user_form{
