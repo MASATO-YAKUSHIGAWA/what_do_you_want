@@ -1,26 +1,35 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :null_session 
-  # before_action :store_user_location!, if: :storable_location?
-  # before_action :authenticate_user!
+  before_action :current_user
+  helper_method :user_signed_in?
+  helper_method :current_user
+  protect_from_forgery with: :exception
 
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:want])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar])
+  def current_user
+    remember_token = User.encrypt(cookies[:user_remember_token])
+    @current_user ||= User.find_by(remember_token: remember_token)
   end
 
-  # private
-  #   def storable_location?
-  #     request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
-  #   end
+  ## ログイン
+  def sign_in(user)
+    remember_token = User.new_remember_token
+    cookies.permanent[:user_remember_token] = remember_token
+    pp user
+    user.update!(remember_token: User.encrypt(remember_token))
+    @current_user = user
+  end
 
-  #   def store_user_location!
-  #     store_location_for(:user, request.fullpath)
-  #   end
+  ## ログアウト
+  def sign_out(user)
+    remember_token = User.new_remember_token
+    # cookies.delete(:user_remember_token)
+    user = User.find(current_user.id)
+    user.update!(remember_token: User.encrypt(remember_token))
+  end
 
-  #   def after_sign_in_path_for(resource_or_scope)
-  #     stored_location_for(resource_or_scope) || super
-  #   end
+  def user_signed_in?
+    @current_user.present?
+  end
+
+
 end

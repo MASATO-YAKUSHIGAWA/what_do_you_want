@@ -10,7 +10,7 @@
     .todo_header__content__all_todos
       = link_to "一覧", todos_path()
     .todo_header__content__log_out
-      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
+      = link_to "ログアウト", logout_path, method: :delete, class: 'btn'
 
 .todo_content
   .todo_content__tab_wrap
