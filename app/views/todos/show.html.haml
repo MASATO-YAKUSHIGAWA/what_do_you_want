@@ -12,6 +12,9 @@
     - if user_signed_in? && current_user.id
       .todo_header__content__log_out
         = link_to "ログアウト", logout_path, method: :delete, class: 'btn'
+.big_user_icon
+  = image_tag(@user.avatar.variant(resize: "300x350"))
+
 
 .todo_content
   .todo_content__tab_wrap
