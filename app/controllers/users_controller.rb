@@ -20,6 +20,13 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to :root
+    end
+  end
+
   private
     def set_user
       @user = User.find(params[:id])

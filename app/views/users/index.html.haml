@@ -27,7 +27,9 @@
         .sign_up_modal__contents__box__title
           AVATAR
         .sign_up_modal__contents__box__form
-          = f.file_field :avatar,class: "user_form"
+          = f.file_field :avatar,class: "user_form", id: "first_user_avatar", style: "display:none"
+          %label{for: "first_user_avatar",class: "first-image"}写真を選択する
+          .first_user_avatar
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
           PASSWARD

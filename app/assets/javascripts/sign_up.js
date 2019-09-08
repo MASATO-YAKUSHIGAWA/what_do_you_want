@@ -26,8 +26,30 @@ $(document).on("turbolinks:load", function(){
     $(window).on('resize', function(){
       modalResize();
     });
+
+    $(".first-image").on("click", function(){
+      $(".first_user_avatar").append("<img>")
+      var img_form = $(this).prevAll("input") //formのinputタグ取得
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $(".selected_avatar").css('maxWidth','200px');
+          $(".selected_avatar").css('maxHeight','200px');
+          $(".first_user_avatar").append("<img class='selected_avatar' src=''/>")
+          $(".selected_avatar").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+      $(img_form).change(function() {
+        readURL(this);
+      });
+    })
   })
 
+
+  //ログインモーダルの表示
   $(".link__log-in__login_btn").on("click",function(){
     console.log(this)
     $('body').append('<div class="title_modal_bg"></div>');
@@ -55,4 +77,5 @@ $(document).on("turbolinks:load", function(){
     $(window).on('resize', function(){
       modalResize();
     });
-  })})
+  })
+})

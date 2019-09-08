@@ -1,4 +1,4 @@
-.sign_up_modal{
+.edit_modal{
   display: none;
   position: fixed;
   z-index: 2222;
@@ -7,10 +7,27 @@
   overflow-y: scroll;
   height: 100vh;
   &__header{
+    position: relative;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 10px;
+    color: white;
+    &__back{
+      display: inline-block;
+      width:100px;
       text-align: center;
-      font-size: 30px;
-      padding-top: 10px;
+      border: 1px solid white;
       color: white;
+      font-size: 16px;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      left: 50px;
+    }
+    &__back:hover{
+      background-color: white;
+      color: black;
+    }
   }
   &__contents{
     padding: 20px 20px 30px;
@@ -47,15 +64,15 @@
       }
     }
     &__btn{
-      width: 410px;
+      width: 380px;
       margin: 0 auto;
       .form_btn{
-        display: inline-block;
-        width: 410px;
+        width: 380px;
         font-weight: bold;
         font-size: 16px;
         border-style: none;
         line-height: 48px;
+        width: 100%;
         cursor: pointer;
         background-color:white;
         border: 1px solid transparent;
@@ -68,33 +85,13 @@
       }
     }
   }
-  .first-image{
+  .edit-image{
     display: inline-block;
-    width: 410px;
-    font-size: 16px;
-    border-style: none;
-    line-height: 48px;
+    width: 200px;
     cursor: pointer;
-    background-color:white;
-    border: 1px solid transparent;
-    border-radius: 4px;  
-    border: solid 2px  black;
-  }
-  .first-image:hover{
-    background-color: black;
     color: white;
   }
-}
-
-
-// ログインモーダル
-.sign_modal_wrapper {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: black;
-  opacity: .7;
-  display: none;
+  .edit-image:hover{
+    border: 1px solid white;
+  }
 }
