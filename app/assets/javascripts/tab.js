@@ -48,7 +48,8 @@ $(document).on("turbolinks:load", function(){
     .done(function(){
       console.log("成功")
       $(`[id="tab-${title_id}"]`).remove() //該当データをremove
-
+      $(`.todo_content__tab_wrap__tab_area a:first`)[0].click();
+      console.log(this)
       var tab = $(".todo_content__tab_wrap__tab_area").children("a").length //タブのaタグの数を取得
       console.log(tab)
       if(tab == 0){
