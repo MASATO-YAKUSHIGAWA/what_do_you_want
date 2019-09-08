@@ -22,8 +22,12 @@
           .all_todos__content__personal__index__user_want
             .all_todos__content__personal__index__user_want__content
               %h2= user.want
-          .all_todos__content__personal__index__description
-            説明文、コメント、プロフィール
+          - if user.self_introduction
+            .all_todos__content__personal__index__description
+              = user.self_introduction
+          - else
+            .all_todos__content__personal__index__description
+              NOT YET...
           .all_todos__content__personal__index__detail_btn{"data-user-id":"#{user.id}"}
             more
         -# todoモーダル

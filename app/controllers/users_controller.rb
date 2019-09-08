@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :name, :want, :avatar, :password,:password_confirmation, :remember_token,:password_digest).merge(remember_token: User.encrypt(cookies[:user_remember_token]))
+      params.require(:user).permit(:email, :name, :want, :avatar, :password,:password_confirmation, :remember_token,:password_digest, :self_introduction).merge(remember_token: User.encrypt(cookies[:user_remember_token]))
     end
 
 end

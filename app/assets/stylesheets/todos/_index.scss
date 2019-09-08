@@ -62,13 +62,34 @@
             color: #57ad57;
             font-size: 50px;
             overflow-wrap: break-word;
+            h2 {
+              max-height: 150px;
+              overflow: hidden;
+              position: relative;
+            }
+            h2::after{
+              display: block;
+              content: '';
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              width: 50%;
+              height: 1.5em;
+              background: -webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(72%, #fff));
+              background: linear-gradient(to right, rgba(255,255,255,0), #fff 72%);
+            }
+
           }
         }
         &__description{
           margin-top: 30px;
           padding-top: 10px;
-          width: 100%;
+          width: 400px;
           position: relative;
+          max-height:100px;
+          height: 100px;
+          word-break: break-word;
+          overflow: hidden;
         }
         &__description::before{
           content: '';
@@ -82,6 +103,17 @@
           height: 3px;
           background-color: #000;
           }
+          &__description::after{
+          display: block;
+          content: '';
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 50%;
+          height: 1.5em;
+          background: -webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(72%, #fff));
+          background: linear-gradient(to right, rgba(255,255,255,0), #fff 72%);
+        }
           &__detail_btn{
           background-color: #57ad57;
           width:100px;

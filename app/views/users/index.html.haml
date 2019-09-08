@@ -47,6 +47,11 @@
         .sign_up_modal__contents__box__form
           = f.text_field :want,class: "user_form", autofocus: true
           = f.hidden_field :remember_token
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          SELF-INTRODUCTION
+        .sign_up_modal__contents__box__form
+          = f.text_area :self_introduction,class: "user_form__intro", autofocus: true
       .sign_up_modal__contents__btn
         = f.submit "Sign up", class: "form_btn"
 
