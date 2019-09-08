@@ -89,6 +89,8 @@ return todo_html;
         $('.todo_content__tab_wrap__todo_area > div').hide().filter(this.hash).fadeIn(); //hashにてtodo_areaのid取得し、表示
         $('.todo_content__tab_wrap__tab_area a').removeClass('active');
         $(this).addClass('active');
+        $(".delete_tab").removeClass("active");
+        $(this).next(".delete_tab").addClass("active")
         return false;
       })
       .filter(':eq(0)').click(); //初期設定は一番最初のタブ
