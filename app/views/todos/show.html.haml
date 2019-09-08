@@ -9,8 +9,9 @@
       = image_tag(@user.avatar.variant(resize: "110x110"))
     .todo_header__content__all_todos
       = link_to "一覧", todos_path()
-    .todo_header__content__log_out
-      = link_to "ログアウト", logout_path, method: :delete, class: 'btn'
+    - if user_signed_in? && current_user.id
+      .todo_header__content__log_out
+        = link_to "ログアウト", logout_path, method: :delete, class: 'btn'
 
 .todo_content
   .todo_content__tab_wrap
@@ -19,10 +20,12 @@
         %a(href="#tab-#{user_title.id}"){class: "todo_content__tab_wrap__tab_area__tab_label",id: "tab-#{user_title.id}"}
           = user_title.title
           - title_id = user_title.id
-        .delete_tab{id: "tab-#{user_title.id}","data-title-id":"#{user_title.id}"}
-          %p×
-    .add_tab
-      ➕
+        - if user_signed_in? && current_user.id
+          .delete_tab{id: "tab-#{user_title.id}","data-title-id":"#{user_title.id}"}
+            %p×
+    - if user_signed_in? && current_user.id
+      .add_tab
+        ➕
     .tab_balloon
       やりたいことを入力しよう！
     .todo_content__tab_wrap__todo_area
