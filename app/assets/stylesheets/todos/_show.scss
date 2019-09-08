@@ -1,8 +1,12 @@
 .todo_header{
+  position: fixed;
   height: 100px;
   width:100vw;
+  z-index: 100;
+  background-color: white;
+  padding-top: 20px;
   &__content{
-    margin: 20px 40px;
+    margin: 0 40px;
     text-align: center;
     height: 100%;
     border-bottom: 1px solid grey;
@@ -50,6 +54,7 @@
 }
 
 .todo_content{
+  padding-top: 100px; /* 打ち消し用のパディング */
   &__tab_wrap{
     width: 800px;
     margin: 80px auto;
