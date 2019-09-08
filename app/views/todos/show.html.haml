@@ -6,15 +6,16 @@
     .todo_header__content__user_name
       = @user.name
     .todo_header__content__user_icon
-      = image_tag(@user.avatar.variant(resize: "110x110"))
     .todo_header__content__all_todos
       = link_to "一覧", todos_path()
     - if user_signed_in? && current_user.id
       .todo_header__content__log_out
         = link_to "ログアウト", logout_path, method: :delete, class: 'btn'
+    .todo_header__content__edit
+      %p edit
+
 .big_user_icon
   = image_tag(@user.avatar.variant(resize: "300x350"))
-
 
 .todo_content
   .todo_content__tab_wrap
