@@ -1,5 +1,6 @@
 .todo_header{
   height: 100px;
+  width:100vw;
   &__content{
     margin: 20px 40px;
     text-align: center;
@@ -45,7 +46,6 @@
         text-decoration-line: underline;
       }
     }
-
   }
 }
 

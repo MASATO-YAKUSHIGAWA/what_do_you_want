@@ -37,6 +37,8 @@ $(document).on("turbolinks:load", function(){
   $(".todo_content__tab_wrap__tab_area").on("click", ".delete_tab", function(){
     var title_id = $(this).data("title-id")
     console.log(title_id)
+    console.log($(`.add${title_id}`).find("div").data("todo-id"))
+
     $.ajax({
       type: 'DELETE',
       dataType: 'json',

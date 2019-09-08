@@ -23,6 +23,35 @@
               %h2= user.want
           .all_todos__content__personal__index__description
             説明文、コメント、プロフィール
-          .all_todos__content__personal__index__detail_btn
+          .all_todos__content__personal__index__detail_btn{"data-user-id":"#{user.id}"}
             more
-
+        -# todoモーダル
+        .parsonal_todos{id: "parsonal_todos#{user.id}", "data-user-id":"#{user.id}"}
+          .todo_content__tab_wrap
+            .todo_back
+              ← back
+            .todo_content__tab_wrap__tab_area
+              - @titles.each do |title|
+                - if title.user_id == user.id
+                  %a(href="#tab-#{title.id}"){class: "todo_content__tab_wrap__tab_area__tab_label",id: "tab-#{title.id}"}
+                    = title.title
+                    - title_id = title.id
+              .todo_content__tab_wrap__todo_area
+                - @titles.each do |title|
+                  .todo_content__tab_wrap__todo_area__todo_box{id: "tab-#{title.id}"}
+                    - if @todos
+                      .todo_content__tab_wrap__todo_area__todo_box__display{class: "add#{title.id}"}
+                        - @todos.each do |todo|
+                          - if todo.title_id == title.id && todo.user_id == user.id
+                            .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap{"data-todo-id":"#{todo.id}"}
+                              .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__content
+                                = todo.content
+                              .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__like
+                                - if todo.liked_by?(current_user) #すでにいいねしていれば（todoモデルにて定義）
+                                  %i.fa.fa-heart{"data-todo-id":"#{todo.id}"}
+                                  .likes_count
+                                    = todo.likes.count
+                                - else                            #まだいいねしていなければ
+                                  %i.fa.fa-heart-o{"data-todo-id":"#{todo.id}"}
+                                  .likes_count
+                                    = todo.likes.count
