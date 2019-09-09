@@ -28,32 +28,40 @@ function build_edit_HTML (todo){
   return edit_html;
 }
 
-  //テキストボックスに変更を加えたら発動
-  // $(document).on("click", ".todo_content__tab_wrap__todo_area__todo_box__create_todo",function(){
-  //   var title_id = $(this).data("title-id")
-  //   var form = $(this).children().children(`#todo_content${title_id}`)
-  //   console.log(form)
-    $(document).on("change",'input[type="text"]', function() {
-      var parent = $(this).parent().parent()
-      var title_id = $(parent).data("title-id")
-      $.ajax({
-        url: "/todos", 
-        type: 'POST',
-        data: {"todo[content]":$(`#todo_content${title_id}`).val(), "todo[title_id]":title_id}, //入力された値の取得 {'name':&('#id').val()}
-        dataType: 'json',
-      })
-      .done(function(data) { //jbuilderからデータを受信
-        console.log(data)
-        console.log("成功");
-        $(`.todo_form`).val("") //text_areaを空白へ
-        var html = buildHTML(data)
-        $(`.add${title_id}`).append(html)
-      })
-      .fail(function(data) {
-        console.log("失敗");
-      });  
+  //新規todoテキストボックスに変更を加えたら発動
+$(".todo_content__tab_wrap__todo_area").on("click", ".todo_create_btn", function(e){
+  e.preventDefault();
+  var parent = $(this).parent().parent()
+  var title_id = $(parent).data("title-id")
+
+  if ($(this).prev().val() == ""){
+    $(`#todo_content${title_id}`).css("background","red")
+    return false;
+  }
+  if($(this).prev().val() !== ""){
+  var parent = $(this).parent().parent()
+  var title_id = $(parent).data("title-id")
+  console.log(title_id)
+  $.ajax({
+  url: "/todos", 
+  type: 'POST',
+  data: {"todo[content]":$(`#todo_content${title_id}`).val(), "todo[title_id]":title_id}, //入力された値の取得 {'name':&('#id').val()}
+  dataType: 'json',
+  })
+  .done(function(data) { //jbuilderからデータを受信
+    console.log(data)
+    console.log("成功");
+    $(`.todo_form`).val("") //text_areaを空白へ
+    var html = buildHTML(data)
+    $(`.add${title_id}`).append(html)
+    $(`#todo_content${title_id}`).css("background","")
     })
-  // })
+  .fail(function(data) {
+    console.log("失敗");
+  });  
+} 
+})
+
 
   // 削除機能
   $(document).on("click", ".todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__delete_btn",function(){
@@ -76,19 +84,15 @@ function build_edit_HTML (todo){
   })
 
   // 編集機能
-  $(".todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__content").on("dblclick", function(){ //pタグをダブルクリックすれば発火
+  $(".todo_content__tab_wrap__todo_area").on("dblclick",".todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__content",function(){ //pタグをダブルクリックすれば発火
     console.log(this)
     var content = $(this)
     var input = $("<input>").attr("type","text").val($(this).text());
     $(this).html(input);  //pタグをinput要素へ変換
-    console.log(this)
-
     $(this).on("change",'input[type="text"]', function() { //inputに変更が加われば発火
       console.log($(this).val())
       var parent = $(this).parent().parent()
       var todo_id = $(parent).data("todo-id")
-      var title_id = $(parent).data("title-id")
-      console.log(todo_id)
       $.ajax({
         url: `/todos/${todo_id}`, 
         type: 'patch',

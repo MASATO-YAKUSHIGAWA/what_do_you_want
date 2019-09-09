@@ -126,16 +126,6 @@ img{
     }
     &__tab_area{
       font-size: 0;
-      // width:150px; 
-      // margin:0 5px;
-      // display:inline-block; 
-      // padding:12px 0;
-      // color:#999; 
-      // background:#ddd;
-      // text-align:center; 
-      // font-size:13px;
-      // cursor:pointer; 
-      // transition:ease 0.2s opacity;
       &__tab_label{
         position: relative;
         padding: 0 20px;
@@ -148,19 +138,6 @@ img{
         font-size:13px;
         cursor:pointer; 
         transition:ease 0.2s opacity;
-        // .delete_tab{
-        //   display: inline-block;
-        //   z-index: 9999;
-        //   cursor: pointer;
-        //   color: black;
-        //   font-size: 14px;
-        //   position: absolute;
-        //   top:0;
-        //   left:10px;
-        // }
-        // .delete_tab:hover{
-        //   color: red;
-        // }
       }
       .todo_content__tab_wrap__tab_area__tab_label.active{
         background:#ddd;
@@ -195,16 +172,12 @@ img{
           cursor: pointer;
         }
       }
-      
   }
-
-
     &__add_tab{
       display: inline-block;
       cursor: pointer;
     }
     &__todo_area{
-      // height: 200px;
       background-color: lightgray;
       &__todo_box{
         padding: 10px 20px;

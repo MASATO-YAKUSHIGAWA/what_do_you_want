@@ -57,7 +57,9 @@
             .todo_content__tab_wrap__todo_area__todo_box__create_todo{"data-title-id":"#{user_title.id}"}
               = form_with model: @todo,url: { controller: 'todos', action: 'create' }, local: true do |f|
                 = f.text_field :content,class: "todo_form",id: "todo_content#{user_title.id}"
+                =f.submit "完了",{class: "todo_create_btn", id:"todo_create_btn_#{user_title.id}", style: "display:none"}
 
+-# タイトルモーダル
 .title_modal
   = form_with model: @title, url: {controller: "titles", action: "create"}, local: true do |f|
     .title_modal__box
@@ -69,7 +71,8 @@
       .title_modal__select--cancel
         キャンセル
       .title_modal__select--done
-        = f.submit "完了",{class: "done-btn"}
+        = f.submit "完了",{class: "done-btn", id:"title_done_btn", style: "display:none"}
+        %label{for:"title_done_btn", class:"done-btn"}完了
 
 
 -# 編集モーダル
