@@ -15,7 +15,10 @@ $(document).on("turbolinks:load", function(){
       }
       modalResize(); //真ん中表示
     $(`#parsonal_todos${user_id}`).fadeIn(); // modalをフェードインで表示
+    console.log($(`#parsonal_todos${user_id} a:first`).length == 0)
+    if($(`#parsonal_todos${user_id} a:first`).length !== 0){
     $(`#parsonal_todos${user_id} a:first`)[0].click();
+    }
     $(`#parsonal_todos${user_id}`).css("animation",`modal 1.0s forwards`);
     $('.todo_back').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
       $(`#parsonal_todos${user_id}`).fadeOut();

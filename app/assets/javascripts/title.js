@@ -1,4 +1,4 @@
-$(function() {
+$(document).on("turbolinks:load", function(){
   //タイトルのモーダル表示
   $(document).on("click", ".add_tab", function(){
     $('body').append('<div class="title_modal_bg"></div>');

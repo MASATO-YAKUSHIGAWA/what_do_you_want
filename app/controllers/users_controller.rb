@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :move_to_top, only:[:index]
 
   def index
     @user = User.new
@@ -34,6 +35,10 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:email, :name, :want, :avatar, :password,:password_confirmation, :remember_token,:password_digest, :self_introduction).merge(remember_token: User.encrypt(cookies[:user_remember_token]))
+    end
+
+    def move_to_top
+      redirect_to controller: :todos, action: :show if user_signed_in?
     end
 
 end

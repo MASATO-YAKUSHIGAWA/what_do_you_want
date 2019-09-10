@@ -14,17 +14,12 @@
       &__title{
       display: inline-block;
       text-align: center;
+      text-transform: uppercase;
     }
     &__user_name{
       position: absolute;
       top: 0;
       left: 0;
-    }
-    &__user_icon{
-      font-size: 50px;
-      position: absolute;
-      left: 0;
-      top: 0;
     }
     &__all_todos{
       position: absolute;
@@ -70,13 +65,31 @@
   background-color: white;
   opacity: 0.6;
 img{
-    position: relative;
     z-index: -8888;
     width:550px;
     height: 600px;
     object-fit: cover;
     filter: blur(5px);
     background-color: black;
+  }
+}
+.my_want{
+  position: absolute;
+  top:470px;
+  left:250px;
+  height: 300px;
+  width: 1100px;
+  opacity: 0.6;
+  word-break: break-word;
+  p{
+    font-family: 'GT Walsheim';
+    font-size: 100px;
+    font-weight: 700;
+    color: #57ad57;
+    filter: blur(2px);
+    position: absolute;
+    bottom: 0;
+    text-transform: uppercase;
   }
 }
 
@@ -172,7 +185,7 @@ img{
           cursor: pointer;
         }
       }
-  }
+    }
     &__add_tab{
       display: inline-block;
       cursor: pointer;
@@ -223,3 +236,4 @@ img{
     }
   }
 }
+

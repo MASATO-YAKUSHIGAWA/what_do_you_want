@@ -16,6 +16,9 @@
 
 .big_user_icon
   = image_tag(@user.avatar.variant(resize: "300x350"))
+.my_want
+  %p 
+    = @user.want
 
 .todo_content
   .todo_content__tab_wrap
@@ -61,12 +64,12 @@
 
 -# タイトルモーダル
 .title_modal
-  = form_with model: @title, url: {controller: "titles", action: "create"}, local: true do |f|
+  = form_with model: @title, url: {controller: "titles", action: "create"},id: "create_title", local: true do |f|
     .title_modal__box
       .title_modal__box__content
         タイトルを入力してください
         .title_modal__box__content__form
-          = f.text_field :title
+          = f.text_field :title, name: "create_title"
     .title_modal__select
       .title_modal__select--cancel
         キャンセル

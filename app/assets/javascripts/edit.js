@@ -13,7 +13,27 @@ $(document).on("turbolinks:load", function(){
       }
       modalResize(); //真ん中表示
     $(".edit_modal").fadeIn(); // modalをフェードインで表示
-    $('.title_modal_bg, .form_btn, .edit_modal__header__back').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
+
+    $(".edit-image").on("click", function(){
+      var img_form = $(this).prevAll("input") //formのinputタグ取得
+      var exit_img = $(this).prevAll("img") //imgタグ取得
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $(".user_avatar").css('maxWidth','200px');
+            $(".user_avatar").css('maxHeight','200px');
+            $(exit_img).attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+        $(img_form).change(function() {
+          readURL(this);
+        });
+    })
+
+      $('.title_modal_bg, .form_btn, .edit_modal__header__back').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
       $('.edit_modal').fadeOut();
       $('.title_modal_bg').fadeOut('slow',function(){
         $('.title_modal_bg').remove();
@@ -25,24 +45,5 @@ $(document).on("turbolinks:load", function(){
     $(window).on('resize', function(){
       modalResize();
     });
-  })
-
-  $(".edit-image").on("click", function(){
-    var img_form = $(this).prevAll("input") //formのinputタグ取得
-    var exit_img = $(this).prevAll("img") //imgタグ取得
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          $(".user_avatar").css('maxWidth','200px');
-          $(".user_avatar").css('maxHeight','200px');
-          $(exit_img).attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-      $(img_form).change(function() {
-        readURL(this);
-      });
   })
 })
