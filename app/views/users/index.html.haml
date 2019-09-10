@@ -9,44 +9,51 @@
         SIGN-UP
 
 .sign_up_modal
-  = form_with model: @user, url: users_path, method: :post, id: 'new_user', class: 'new_user', local: true do |f|
+  = form_with model: @user, url: users_path, method: :post, id: 'new_user', class: 'new_user',name: "signup",local: true do |f|
     .sign_up_modal__header
       %h2 Sign up
     .sign_up_modal__contents
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title
-          NAME
+        .sign_up_modal__contents__box__title#required
+          %p NAME *
         .sign_up_modal__contents__box__form
-          = f.text_field :name, class: "user_form", autofocus: true
+          = f.text_field :name, class: "user_form",id: "user_name", name: "name", autofocus: true
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title
-          E-MAIL
+        .sign_up_modal__contents__box__title#required
+          %p E-MAIL *
         .sign_up_modal__contents__box__form
-          = f.email_field :email,class: "user_form", autofocus: true, autocomplete: "email"
+          = f.email_field :email,class: "user_form", name: "email", autofocus: true, autocomplete: "email"
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title
-          AVATAR
+        .sign_up_modal__contents__box__title#required
+          %p AVATAR *
         .sign_up_modal__contents__box__form
-          = f.file_field :avatar,class: "user_form"
+          = f.file_field :avatar,class: "user_form", id: "first_user_avatar",name: "avatar", style: "display:none"
+          %label{for: "first_user_avatar",class: "first-image"}select image
+          .first_user_avatar
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title
-          PASSWARD
+        .sign_up_modal__contents__box__title#required
+          %p PASSWARD *
           - if @minimum_password_length
             %em
             (#{@minimum_password_length} characters minimum)
         .sign_up_modal__contents__box__form
-          = f.password_field :password,class: "user_form", autocomplete: "new-password"
+          = f.password_field :password,class: "user_form",name: "password", autocomplete: "new-password"
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title
-          PASSWARD (COMFIRMATION)
+        .sign_up_modal__contents__box__title#required
+          %p PASSWARD (COMFIRMATION) *
         .sign_up_modal__contents__box__form
-          = f.password_field :password_confirmation,class: "user_form", autocomplete: "new-password"
+          = f.password_field :password_confirmation,class: "user_form",name: "password_comfirmation", autocomplete: "new-password"
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title
-          WHAT DO YOU WANT?
+        .sign_up_modal__contents__box__title#required
+          %p WHAT DO YOU WANT? *
         .sign_up_modal__contents__box__form
-          = f.text_field :want,class: "user_form", autofocus: true
+          = f.text_field :want,class: "user_form",name: "want", autofocus: true
           = f.hidden_field :remember_token
+      .sign_up_modal__contents__box
+        .sign_up_modal__contents__box__title
+          SELF-INTRODUCTION
+        .sign_up_modal__contents__box__form
+          = f.text_area :self_introduction,class: "user_form__intro", autofocus: true
       .sign_up_modal__contents__btn
         = f.submit "Sign up", class: "form_btn"
 
@@ -57,21 +64,21 @@
     .sign_up_modal__contents
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
-          E-MAIL
-        .sign_up_modal__contents__box__form
+          E-MAIL *
+        .sign_up_modal__contents__box__form#required
           = f.email_field :email,class: "user_form", autofocus: true, autocomplete: "email", name: "session[email]"
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
-          PASSWARD
+          PASSWARD *
           - if @minimum_password_length
             %em
             (#{@minimum_password_length} characters minimum)
-        .sign_up_modal__contents__box__form
+        .sign_up_modal__contents__box__form#required
           = f.password_field :password,class: "user_form", autocomplete: "current-password", name: "session[password]"
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
-          PASSWARD (COMFIRMATION)
-        .sign_up_modal__contents__box__form
+          PASSWARD (COMFIRMATION) *
+        .sign_up_modal__contents__box__form#required
           = f.password_field :password_confirmation,class: "user_form", autocomplete: "current-password"
       .sign_up_modal__contents__btn
         = f.submit "Log In", class: "form_btn"

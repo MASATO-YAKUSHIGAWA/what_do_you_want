@@ -6,12 +6,19 @@
     .todo_header__content__user_name
       = @user.name
     .todo_header__content__user_icon
-      = image_tag(@user.avatar.variant(resize: "110x110"))
     .todo_header__content__all_todos
       = link_to "一覧", todos_path()
     - if user_signed_in? && current_user.id
       .todo_header__content__log_out
         = link_to "ログアウト", logout_path, method: :delete, class: 'btn'
+    .todo_header__content__edit
+      %p edit
+
+.big_user_icon
+  = image_tag(@user.avatar.variant(resize: "300x350"))
+.my_want
+  %p 
+    = @user.want
 
 .todo_content
   .todo_content__tab_wrap
@@ -53,16 +60,60 @@
             .todo_content__tab_wrap__todo_area__todo_box__create_todo{"data-title-id":"#{user_title.id}"}
               = form_with model: @todo,url: { controller: 'todos', action: 'create' }, local: true do |f|
                 = f.text_field :content,class: "todo_form",id: "todo_content#{user_title.id}"
+                =f.submit "完了",{class: "todo_create_btn", id:"todo_create_btn_#{user_title.id}", style: "display:none"}
 
+-# タイトルモーダル
 .title_modal
-  = form_with model: @title, url: {controller: "titles", action: "create"}, local: true do |f|
+  = form_with model: @title, url: {controller: "titles", action: "create"},id: "create_title", local: true do |f|
     .title_modal__box
       .title_modal__box__content
         タイトルを入力してください
         .title_modal__box__content__form
-          = f.text_field :title
+          = f.text_field :title, name: "create_title"
     .title_modal__select
       .title_modal__select--cancel
         キャンセル
       .title_modal__select--done
-        = f.submit "完了",{class: "done-btn"}
+        = f.submit "完了",{class: "done-btn", id:"title_done_btn", style: "display:none"}
+        %label{for:"title_done_btn", class:"done-btn"}完了
+
+
+-# 編集モーダル
+.edit_modal
+  = form_with model: @user, url: user_path(current_user.id), method: :patch, id: 'new_user', class: 'new_user', local: true do |f|
+    .edit_modal__header
+      %h2 Edit
+      .edit_modal__header__back
+        ← back
+    .edit_modal__contents
+      .edit_modal__contents__box
+        .edit_modal__contents__box__title
+          NAME
+        .edit_modal__contents__box__form
+          = f.text_field :name, class: "user_form", autofocus: true
+      .edit_modal__contents__box
+        .edit_modal__contents__box__title
+          E-MAIL
+        .edit_modal__contents__box__form
+          = f.email_field :email,class: "user_form", autofocus: true, autocomplete: "email"
+      .edit_modal__contents__box
+        .edit_modal__contents__box__title
+          AVATAR
+        .edit_modal__contents__box__form
+          = image_tag((@user.avatar).variant(resize: "200x200"), class: "user_avatar")
+          = f.file_field :avatar,type: "file", class: "user_form_image", id: "image-#{@user.id}",style: "display: none"
+          %br
+          %label{for: "image-#{@user.id}",class: "edit-image"}写真を変更する
+      .edit_modal__contents__box
+        .edit_modal__contents__box__title
+          WHAT DO YOU WANT?
+        .edit_modal__contents__box__form
+          = f.text_field :want,class: "user_form", autofocus: true
+          = f.hidden_field :remember_token
+      .edit_modal__contents__box
+        .edit_modal__contents__box__title
+          SELF-INTRODUCTION
+        .edit_modal__contents__box__form
+          = f.text_area :self_introduction,class: "user_form__intro", autofocus: true
+      .edit_modal__contents__btn
+        = f.submit "Edit", class: "form_btn"

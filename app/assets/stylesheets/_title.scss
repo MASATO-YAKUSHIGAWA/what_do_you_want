@@ -7,11 +7,14 @@
   text-align: center;
   position: fixed;
   background: #fff;
+  border: 1px solid black;
   &__box{
     padding: 10px;
     line-height: 1.5;
+    height: 80px;
     &__content{
       &__form{
+        margin-top:15px; 
       }
     }
   }
@@ -19,11 +22,27 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    vertical-align:bottom;
     &--cancel{
+      height: 30px;
       width: 50%;
+      line-height: 30px;
+      cursor: pointer;
+      border-top: 1px solid black;
+      border-right:1px solid black;
     }
     &--done{
+      height: 30px;
       width: 50%;
+      line-height: 30px;
+      cursor: pointer;
+      border-top: 1px solid black;
+      label{
+        display: block;
+        cursor: pointer;
+        width: 150px;
+        height: 30px;
+      }
     }
   }
 }

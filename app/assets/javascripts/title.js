@@ -1,4 +1,4 @@
-$(function() {
+$(document).on("turbolinks:load", function(){
   //タイトルのモーダル表示
   $(document).on("click", ".add_tab", function(){
     $('body').append('<div class="title_modal_bg"></div>');
@@ -28,7 +28,6 @@ $(function() {
     });
   })
 
-
 function build_tab_HTML (title){ //タブの追加html
 var tab_html =  `<a class="todo_content__tab_wrap__tab_area__tab_label active" href="#tab-${title.id}" id="tab-${title.id}">
                 ${title.name}
@@ -48,16 +47,22 @@ var todo_html = `<div class="todo_content__tab_wrap__todo_area__todo_box" id="ta
                     <input name="utf8" type="hidden" value="✓">
                     <input type="hidden" name="authenticity_token" value="0Vl5uSedtmoIibMCygI0P4UPdp1AWrSYUh2HZ2pdApzqhvpPtorKiMPbQn2EedBbzMPTriMfi0miVo3pmqkmcA==">
                     <input class="todo_form" id="todo_content${title.id}" type="text" name="todo[content]">
-                    </form>
+                    <input type="submit" name="commit" value="完了" class="todo_create_btn" id="todo_create_btn_${title.id}" style="display:none" data-disable-with="完了">            </form>
                   </div>
-                </div>`
+                </div>
+                `
 return todo_html;
 }
 
 // タブ（タイトル）追加の記述
   $(document).on("click", ".done-btn",function(e){
     e.preventDefault();
-    $.ajax({
+    if($(this).parents(".title_modal__select").prev(".title_modal__box").find("input").val() == ""){
+      $(".title_modal__box__content").css("color","red")
+      return false;
+    }
+    if($(this).parents(".title_modal__select").prev(".title_modal__box").find("input").val() !== ""){
+      $.ajax({
       type: 'POST',
       dataType: 'json',
       data: {"title[title]":$(`#title_title`).val()},
@@ -89,12 +94,17 @@ return todo_html;
         $('.todo_content__tab_wrap__todo_area > div').hide().filter(this.hash).fadeIn(); //hashにてtodo_areaのid取得し、表示
         $('.todo_content__tab_wrap__tab_area a').removeClass('active');
         $(this).addClass('active');
+        $(".delete_tab").removeClass("active");
+        $(this).next(".delete_tab").addClass("active")
         return false;
       })
       .filter(':eq(0)').click(); //初期設定は一番最初のタブ
+
+      $(".title_modal__box__content").css("color","")
     })
     .fail(function(){
       console.log("失敗")
     })
+  }
   })
 })

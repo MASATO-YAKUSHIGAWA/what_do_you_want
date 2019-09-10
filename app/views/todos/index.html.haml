@@ -7,6 +7,7 @@
     .todo_header__content__all_todos
     .todo_header__content__back
       = link_to "← back", root_path
+      
 
 .all_todos
   .all_todos__content
@@ -21,12 +22,19 @@
           .all_todos__content__personal__index__user_want
             .all_todos__content__personal__index__user_want__content
               %h2= user.want
-          .all_todos__content__personal__index__description
-            説明文、コメント、プロフィール
+          - if user.self_introduction
+            .all_todos__content__personal__index__description
+              = user.self_introduction
+          - else
+            .all_todos__content__personal__index__description
+              NOT YET...
           .all_todos__content__personal__index__detail_btn{"data-user-id":"#{user.id}"}
             more
+
         -# todoモーダル
         .parsonal_todos{id: "parsonal_todos#{user.id}", "data-user-id":"#{user.id}"}
+          .parsonal_todos__want
+            = user.want
           .todo_content__tab_wrap
             .todo_back
               ← back
@@ -38,20 +46,20 @@
                     - title_id = title.id
               .todo_content__tab_wrap__todo_area
                 - @titles.each do |title|
-                  .todo_content__tab_wrap__todo_area__todo_box{id: "tab-#{title.id}"}
-                    - if @todos
-                      .todo_content__tab_wrap__todo_area__todo_box__display{class: "add#{title.id}"}
-                        - @todos.each do |todo|
-                          - if todo.title_id == title.id && todo.user_id == user.id
-                            .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap{"data-todo-id":"#{todo.id}"}
-                              .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__content
-                                = todo.content
-                              .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__like
-                                - if todo.liked_by?(current_user) #すでにいいねしていれば（todoモデルにて定義）
-                                  %i.fa.fa-heart{"data-todo-id":"#{todo.id}"}
-                                  .likes_count
-                                    = todo.likes.count
-                                - else                            #まだいいねしていなければ
-                                  %i.fa.fa-heart-o{"data-todo-id":"#{todo.id}"}
-                                  .likes_count
-                                    = todo.likes.count
+                  - @todos.each do |todo|
+                    - if title.id == todo.title_id && todo.user_id == user.id
+                      .todo_content__tab_wrap__todo_area__todo_box{id: "tab-#{title.id}"}
+                        .todo_content__tab_wrap__todo_area__todo_box__display{class: "add#{title.id}"}
+                          .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap{"data-todo-id":"#{todo.id}"}
+                            .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__content
+                              = todo.content
+                            .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__like
+                              - if todo.liked_by?(current_user) #すでにいいねしていれば（todoモデルにて定義）
+                                %i.fa.fa-heart{"data-todo-id":"#{todo.id}"}
+                                .likes_count
+                                  = todo.likes.count
+                              - else                            #まだいいねしていなければ
+                                %i.fa.fa-heart-o{"data-todo-id":"#{todo.id}"}
+                                .likes_count
+                                  = todo.likes.count
+
