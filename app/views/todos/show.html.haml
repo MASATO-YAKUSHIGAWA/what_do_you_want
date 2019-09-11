@@ -7,12 +7,12 @@
       = @user.name
     .todo_header__content__user_icon
     .todo_header__content__all_todos
-      = link_to "一覧", todos_path()
+      = link_to "VIEW ALL", todos_path()
     - if user_signed_in? && current_user.id
       .todo_header__content__log_out
-        = link_to "ログアウト", logout_path, method: :delete, class: 'btn'
+        = link_to "LOG_OUT", logout_path, method: :delete, class: 'btn'
     .todo_header__content__edit
-      %p edit
+      %p EDIT
 
 .big_user_icon
   = image_tag(@user.avatar.variant(resize: "300x350"))
@@ -34,7 +34,7 @@
       .add_tab
         ➕
     .tab_balloon
-      やりたいことを入力しよう！
+      LET’s GET STARTED！
     .todo_content__tab_wrap__todo_area
       - @user_title.each do |user_title|
         .todo_content__tab_wrap__todo_area__todo_box{id: "tab-#{user_title.id}"}
@@ -46,7 +46,7 @@
                     .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__content
                       = todo.content
                     .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__delete_btn{"data-todo-id":"#{todo.id}"}
-                      削除
+                      DELETE
                     .todo_content__tab_wrap__todo_area__todo_box__display__one_todo_wrap__like
                       - if todo.liked_by?(current_user) #すでにいいねしていれば（todoモデルにて定義）
                         %i.fa.fa-heart{"data-todo-id":"#{todo.id}"}
@@ -67,15 +67,15 @@
   = form_with model: @title, url: {controller: "titles", action: "create"},id: "create_title", local: true do |f|
     .title_modal__box
       .title_modal__box__content
-        タイトルを入力してください
+        ENTERE THE TITLE
         .title_modal__box__content__form
           = f.text_field :title, name: "create_title"
     .title_modal__select
       .title_modal__select--cancel
-        キャンセル
+        CANCEL
       .title_modal__select--done
         = f.submit "完了",{class: "done-btn", id:"title_done_btn", style: "display:none"}
-        %label{for:"title_done_btn", class:"done-btn"}完了
+        %label{for:"title_done_btn", class:"done-btn"}DONE
 
 
 -# 編集モーダル
@@ -84,7 +84,7 @@
     .edit_modal__header
       %h2 Edit
       .edit_modal__header__back
-        ← back
+        ← BACK
     .edit_modal__contents
       .edit_modal__contents__box
         .edit_modal__contents__box__title
@@ -103,7 +103,7 @@
           = image_tag((@user.avatar).variant(resize: "200x200"), class: "user_avatar")
           = f.file_field :avatar,type: "file", class: "user_form_image", id: "image-#{@user.id}",style: "display: none"
           %br
-          %label{for: "image-#{@user.id}",class: "edit-image"}写真を変更する
+          %label{for: "image-#{@user.id}",class: "edit-image"}CHANGE THE IMAGE
       .edit_modal__contents__box
         .edit_modal__contents__box__title
           WHAT DO YOU WANT?

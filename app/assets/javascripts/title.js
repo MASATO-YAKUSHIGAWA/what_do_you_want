@@ -1,6 +1,6 @@
 $(document).on("turbolinks:load", function(){
   //タイトルのモーダル表示
-  $(document).on("click", ".add_tab", function(){
+  $(".todo_content__tab_wrap").on("click", ".add_tab", function(){
     $('body').append('<div class="title_modal_bg"></div>');
     $('.title_modal_bg').fadeIn(); 
 
@@ -55,7 +55,7 @@ return todo_html;
 }
 
 // タブ（タイトル）追加の記述
-  $(document).on("click", ".done-btn",function(e){
+  $(".title_modal").on("click", ".done-btn",function(e){
     e.preventDefault();
     if($(this).parents(".title_modal__select").prev(".title_modal__box").find("input").val() == ""){
       $(".title_modal__box__content").css("color","red")

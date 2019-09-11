@@ -1,12 +1,12 @@
 .todo_header
   .todo_header__content
     .todo_header__content__title
-      %h1　みんなのやりたいことリスト
+      %h2　ALL BUCKET LISTS
     .todo_header__content__user_name
     .todo_header__content__user_icon
     .todo_header__content__all_todos
     .todo_header__content__back
-      = link_to "← back", root_path
+      = link_to "← BACK", root_path
       
 
 .all_todos
@@ -29,7 +29,7 @@
             .all_todos__content__personal__index__description
               NOT YET...
           .all_todos__content__personal__index__detail_btn{"data-user-id":"#{user.id}"}
-            more
+            MORE
 
         -# todoモーダル
         .parsonal_todos{id: "parsonal_todos#{user.id}", "data-user-id":"#{user.id}"}
@@ -37,7 +37,7 @@
             = user.want
           .todo_content__tab_wrap
             .todo_back
-              ← back
+              ← BACK
             .todo_content__tab_wrap__tab_area
               - @titles.each do |title|
                 - if title.user_id == user.id
