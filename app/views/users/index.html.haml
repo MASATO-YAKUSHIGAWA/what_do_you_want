@@ -12,6 +12,8 @@
   = form_with model: @user, url: users_path, method: :post, id: 'new_user', class: 'new_user',name: "signup",local: true do |f|
     .sign_up_modal__header
       %h2 Sign up
+    .sign_up_modal__back
+      ← BACK
     .sign_up_modal__contents
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
@@ -58,6 +60,8 @@
   = form_with url: login_path,id: "log_in_user", local: true do |f|
     .log_in_modal__header
       %h2 Log in
+    .log_in_modal__back
+      ← BACK
     .sign_up_modal__contents
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title

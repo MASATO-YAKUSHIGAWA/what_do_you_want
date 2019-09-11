@@ -37,7 +37,7 @@ $(document).on("turbolinks:load", function(){
         });
       })
       $('#new_user').parsley(); //バリデーション
-    $('.title_modal_bg').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
+    $('.sign_up_modal__back').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
       $('.sign_up_modal').fadeOut();
       $('.title_modal_bg').fadeOut('slow',function(){
         $('.title_modal_bg').remove();
@@ -69,7 +69,7 @@ $(document).on("turbolinks:load", function(){
       modalResize(); //真ん中表示
     $(".log_in_modal").fadeIn(); // modalをフェードインで表示
     $('#log_in_user').parsley(); //バリデーション
-    $('.title_modal_bg').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
+    $('.log_in_modal__back').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
       $('.log_in_modal').fadeOut();
       $('.title_modal_bg').fadeOut('slow',function(){
         $('.title_modal_bg').remove();
