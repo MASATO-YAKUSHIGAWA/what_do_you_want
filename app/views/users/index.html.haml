@@ -14,40 +14,37 @@
       %h2 Sign up
     .sign_up_modal__contents
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title#required
+        .sign_up_modal__contents__box__title
           %p NAME *
         .sign_up_modal__contents__box__form
-          = f.text_field :name, class: "user_form",id: "user_name", autofocus: true
+          = f.text_field :name, class: "user_form validate[required]",id: "user_name",required:"", autofocus: true
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title#required
+        .sign_up_modal__contents__box__title
           %p E-MAIL *
         .sign_up_modal__contents__box__form
-          = f.email_field :email,class: "user_form", autofocus: true, autocomplete: "email"
+          = f.email_field :email,class: "user_form", autofocus: true,required:"", autocomplete: "email"
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title#required
+        .sign_up_modal__contents__box__title
           %p AVATAR *
         .sign_up_modal__contents__box__form
-          = f.file_field :avatar,class: "user_form", id: "first_user_avatar", style: "display:none"
+          = f.file_field :avatar,class: "user_form", id: "first_user_avatar",required:"", style: "display:none"
           %label{for: "first_user_avatar",class: "first-image"}select image
           .first_user_avatar
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title#required
-          %p PASSWARD *
-          - if @minimum_password_length
-            %em
-            (#{@minimum_password_length} characters minimum)
+        .sign_up_modal__contents__box__title
+          %p PASSWARD (6 or more characters) *
         .sign_up_modal__contents__box__form
-          = f.password_field :password,class: "user_form", autocomplete: "new-password"
+          = f.password_field :password,class: "user_form", required:"",minlength:"6", "data-parsley-minlength":"6", autocomplete: "new-password"
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title#required
+        .sign_up_modal__contents__box__title
           %p PASSWARD (COMFIRMATION) *
         .sign_up_modal__contents__box__form
-          = f.password_field :password_confirmation,class: "user_form", autocomplete: "new-password"
+          = f.password_field :password_confirmation, class: "user_form",required:"","data-parsley-equalto": "#user_password","data-parsley-equalto-message": "unmatch", minlength:"6", "data-parsley-minlength":"6", autocomplete: "new-password"
       .sign_up_modal__contents__box
-        .sign_up_modal__contents__box__title#required
+        .sign_up_modal__contents__box__title
           %p WHAT DO YOU WANT? *
         .sign_up_modal__contents__box__form
-          = f.text_field :want,class: "user_form", autofocus: true
+          = f.text_field :want,class: "user_form",required:"", autofocus: true
           = f.hidden_field :remember_token
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
@@ -58,7 +55,7 @@
         = f.submit "Sign up", class: "form_btn"
 
 .log_in_modal
-  = form_with url: login_path, local: true do |f|
+  = form_with url: login_path,id: "log_in_user", local: true do |f|
     .log_in_modal__header
       %h2 Log in
     .sign_up_modal__contents
@@ -66,19 +63,16 @@
         .sign_up_modal__contents__box__title
           E-MAIL *
         .sign_up_modal__contents__box__form#required
-          = f.email_field :email,class: "user_form", autofocus: true, autocomplete: "email", name: "session[email]"
+          = f.email_field :email,class: "user_form",required:"", autofocus: true, autocomplete: "email", name: "session[email]"
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
-          PASSWARD *
-          - if @minimum_password_length
-            %em
-            (#{@minimum_password_length} characters minimum)
+          PASSWARD (6 or more characters) *
         .sign_up_modal__contents__box__form#required
-          = f.password_field :password,class: "user_form", autocomplete: "current-password", name: "session[password]"
+          = f.password_field :password,class: "user_form", required:"",minlength:"6", "data-parsley-minlength":"6", autocomplete: "current-password", name: "session[password]"
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
           PASSWARD (COMFIRMATION) *
         .sign_up_modal__contents__box__form#required
-          = f.password_field :password_confirmation,class: "user_form", autocomplete: "current-password"
+          = f.password_field :password_confirmation, class: "user_form",required:"","data-parsley-equalto": "#password","data-parsley-equalto-message": "unmatch", minlength:"6", "data-parsley-minlength":"6", autocomplete: "current-password"
       .sign_up_modal__contents__btn
         = f.submit "Log In", class: "form_btn"

@@ -89,3 +89,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'dotenv-rails'
   gem 'gretel'
   gem 'mini_magick'
+
+  gem 'jQuery-Validation-Engine-rails'
+  
