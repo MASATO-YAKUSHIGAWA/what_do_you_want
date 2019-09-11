@@ -2,12 +2,25 @@
   display: none;
   position: fixed;
   z-index: 2222;
-  width: 700px;
+  width: 100%;
   margin: 0 auto;
+  overflow-y: scroll;
+  height: 100vh;
   &__header{
-      text-align: center;
-      font-size: 30px;
-      padding-top: 20px;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 20px;
+    color: white;
+  }
+  &__back{
+    display:inline;
+    color: white;
+    font-size: 16px;
+    font-weight:bold;
+    margin-left: 20px;
+    position: absolute;
+    top: 20px;
+    cursor: pointer;
   }
   &__contents{
     padding: 40px 40px 64px;
