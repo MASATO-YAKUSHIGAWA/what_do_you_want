@@ -17,17 +17,17 @@
         .sign_up_modal__contents__box__title#required
           %p NAME *
         .sign_up_modal__contents__box__form
-          = f.text_field :name, class: "user_form",id: "user_name", name: "name", autofocus: true
+          = f.text_field :name, class: "user_form",id: "user_name", autofocus: true
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title#required
           %p E-MAIL *
         .sign_up_modal__contents__box__form
-          = f.email_field :email,class: "user_form", name: "email", autofocus: true, autocomplete: "email"
+          = f.email_field :email,class: "user_form", autofocus: true, autocomplete: "email"
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title#required
           %p AVATAR *
         .sign_up_modal__contents__box__form
-          = f.file_field :avatar,class: "user_form", id: "first_user_avatar",name: "avatar", style: "display:none"
+          = f.file_field :avatar,class: "user_form", id: "first_user_avatar", style: "display:none"
           %label{for: "first_user_avatar",class: "first-image"}select image
           .first_user_avatar
       .sign_up_modal__contents__box
@@ -37,17 +37,17 @@
             %em
             (#{@minimum_password_length} characters minimum)
         .sign_up_modal__contents__box__form
-          = f.password_field :password,class: "user_form",name: "password", autocomplete: "new-password"
+          = f.password_field :password,class: "user_form", autocomplete: "new-password"
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title#required
           %p PASSWARD (COMFIRMATION) *
         .sign_up_modal__contents__box__form
-          = f.password_field :password_confirmation,class: "user_form",name: "password_comfirmation", autocomplete: "new-password"
+          = f.password_field :password_confirmation,class: "user_form", autocomplete: "new-password"
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title#required
           %p WHAT DO YOU WANT? *
         .sign_up_modal__contents__box__form
-          = f.text_field :want,class: "user_form",name: "want", autofocus: true
+          = f.text_field :want,class: "user_form", autofocus: true
           = f.hidden_field :remember_token
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title

@@ -36,28 +36,28 @@ $(document).on("turbolinks:load", function(){
           readURL(this);
         });
       })
-      $("#new_user").submit(function(){
-        if ($("input[name='name']").val() == '' || $("input[name='email']").val() == '' || $("input[name='avatar']").val() == '' || $("input[name='password']").val() == '' || $("input[name='password_comfirmation']").val() == '' || $("input[name='want']").val() == '') {
-          // var params = $("#new_user").serializeArray();
-          // // var params = $("#new_user input[value]").serializeArray();
-          // console.log(params)
-          // for (var key in params) {
-          //   // console.log(params[key].name + ":" + params[key].value);
-          //   if((params[key].value).length == "0"){
-          //     console.log()
+      // $("#new_user").submit(function(){
+      //   if ($("input[name='name']").val() == '' || $("input[name='email']").val() == '' || $("input[name='avatar']").val() == '' || $("input[name='password']").val() == '' || $("input[name='password_comfirmation']").val() == '' || $("input[name='want']").val() == '') {
+      //     // var params = $("#new_user").serializeArray();
+      //     // // var params = $("#new_user input[value]").serializeArray();
+      //     // console.log(params)
+      //     // for (var key in params) {
+      //     //   // console.log(params[key].name + ":" + params[key].value);
+      //     //   if((params[key].value).length == "0"){
+      //     //     console.log()
 
-          //   }
+      //     //   }
             
-          // $.each(params, function(params[key], value) {
-          //   console.log(params + ': ' + value)
-          // })
-        // }
-          $("#required p").append("required").css("color","red")
-          return false;
-        } else {
-          $("#new_user").submit();
-        }
-      });
+      //     // $.each(params, function(params[key], value) {
+      //     //   console.log(params + ': ' + value)
+      //     // })
+      //   // }
+      //     $("#required p").append("required").css("color","red")
+      //     return false;
+      //   } else {
+      //     $("#new_user").submit();
+      //   }
+      // });
 
     $('.title_modal_bg').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
       $('.sign_up_modal').fadeOut();
