@@ -19,12 +19,12 @@
         .sign_up_modal__contents__box__title
           %p NAME *
         .sign_up_modal__contents__box__form
-          = f.text_field :name, class: "user_form validate[required]",id: "user_name",required:"", autofocus: true
+          = f.text_field :name, class: "user_form validate[required]",id: "user_name",required:"",placeholder: "SMITH", autofocus: true
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
           %p E-MAIL *
         .sign_up_modal__contents__box__form
-          = f.email_field :email,class: "user_form", autofocus: true,required:"", autocomplete: "email"
+          = f.email_field :email,class: "user_form", autofocus: true,required:"",placeholder:"123@123.com", autocomplete: "email"
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
           %p AVATAR *
@@ -46,13 +46,13 @@
         .sign_up_modal__contents__box__title
           %p WHAT DO YOU WANT? *
         .sign_up_modal__contents__box__form
-          = f.text_field :want,class: "user_form",required:"", autofocus: true
+          = f.text_field :want,class: "user_form",required:"",placeholder:"I WANNA TRIP ARROUND the WORLD", autofocus: true
           = f.hidden_field :remember_token
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
           SELF-INTRODUCTION
         .sign_up_modal__contents__box__form
-          = f.text_area :self_introduction,class: "user_form__intro", autofocus: true
+          = f.text_area :self_introduction,class: "user_form__intro",placeholder:"Hello", autofocus: true
       .sign_up_modal__contents__btn
         = f.submit "Sign up", class: "form_btn"
 
@@ -67,7 +67,7 @@
         .sign_up_modal__contents__box__title
           E-MAIL *
         .sign_up_modal__contents__box__form#required
-          = f.email_field :email,class: "user_form",required:"", autofocus: true, autocomplete: "email", name: "session[email]"
+          = f.email_field :email,class: "user_form",required:"",placeholder:"123@123.com", autofocus: true, autocomplete: "email", name: "session[email]"
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
           PASSWARD (6 or more characters) *
