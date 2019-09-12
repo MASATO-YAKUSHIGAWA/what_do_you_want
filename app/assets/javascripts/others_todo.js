@@ -1,7 +1,6 @@
 $(document).on("turbolinks:load", function(){
   $(".all_todos__content__personal__index__detail_btn").on("click", function(){
     var user_id = $(this).data("user-id")
-    console.log(user_id)
     $('body').append('<div class="todo_modal_bg"></div>');
     $('.todo_modal_bg').fadeIn(); 
 
@@ -15,7 +14,6 @@ $(document).on("turbolinks:load", function(){
       }
       modalResize(); //真ん中表示
     $(`#parsonal_todos${user_id}`).fadeIn(); // modalをフェードインで表示
-    console.log($(`#parsonal_todos${user_id} a:first`).length == 0)
     if($(`#parsonal_todos${user_id} a:first`).length !== 0){
     $(`#parsonal_todos${user_id} a:first`)[0].click();
     }

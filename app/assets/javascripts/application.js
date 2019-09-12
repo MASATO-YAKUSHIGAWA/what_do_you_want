@@ -15,5 +15,11 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery_ujs
-//= require parsley.min
+//= require plug_ins/parsley.min
+//= require plug_ins/TweenMax.min
+//= require plug_ins/velocity.min
+//= require plug_ins/ScrollMagic.min
+//= require plug_ins/animation.gsap.min
+//= require plug_ins/animation.velocity.min
+//= require plug_ins/debug.addIndicators.min
 //= require_tree .

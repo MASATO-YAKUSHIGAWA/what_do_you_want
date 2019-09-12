@@ -1,6 +1,5 @@
 $(document).on("turbolinks:load", function(){
   $(".link__sign-up__signup_btn").on("click",function(){
-    console.log(this)
     $('body').append('<div class="title_modal_bg"></div>');
     $('.title_modal_bg').fadeIn(); 
 
@@ -54,7 +53,6 @@ $(document).on("turbolinks:load", function(){
 
   //ログインモーダルの表示
   $(".link__log-in__login_btn").on("click",function(){
-    console.log(this)
     $('body').append('<div class="title_modal_bg"></div>');
     $('.title_modal_bg').fadeIn(); 
 
@@ -82,23 +80,12 @@ $(document).on("turbolinks:load", function(){
       modalResize();
     });
   })
+
+  // var controller = new ScrollMagic.Controller();
+  // var expansion = new ScrollMagic.Scene({
+  //   triggerElement: "#trigger"
+  //     })
+  //       .setTween("#trigger", 0.5, {scale: 1.5})
+  //       .addIndicators({name: "expansion"})
+  //       .addTo(controller);
 })
-
-
-$("#new_user").submit(function(){
-  console.log(this)
-  if ($("input[name='name']").val() == '') {
-    alert('入力してください');
-    return false;
-  } else {
-    $("#new_user").submit();
-  }
-});
-// var checkForm = function(){
-//   if(document.signup.val() == ""){
-//       alert("必須項目を入力して下さい。");
-// return false;
-//   }else{
-// return true;
-//   }
-// }

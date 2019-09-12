@@ -69,8 +69,6 @@ return todo_html;
       url: `/titles`,
     })
     .done(function(data){
-      console.log(data)
-      console.log("成功")
       $(`#title_title`).val("")
       $('.todo_content__tab_wrap__tab_area a').removeClass('active');
       var tab_html = build_tab_HTML(data)
@@ -79,7 +77,6 @@ return todo_html;
       $(`.todo_content__tab_wrap__todo_area`).append(todo_html) //タブの追加
 
       var tab = $(".todo_content__tab_wrap__tab_area").children("a").length //タブのaタグの数を取得
-      console.log(tab)
       if(tab >= 1 && tab <= 4){
         var new_position = 70 + (tab * 160)
         $(".add_tab").css("left",new_position+ "px")
@@ -103,7 +100,6 @@ return todo_html;
       $(".title_modal__box__content").css("color","")
     })
     .fail(function(){
-      console.log("失敗")
     })
   }
   })

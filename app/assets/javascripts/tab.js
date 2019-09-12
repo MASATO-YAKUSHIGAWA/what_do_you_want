@@ -19,7 +19,6 @@ $(document).on("turbolinks:load", function(){
 
   // プラスボタンの位置（初期）
   var tab = $(".todo_content__tab_wrap__tab_area").children("a").length //タブのaタグの数を取得
-  console.log(tab)
   if(tab == 0){
     $(".add_tab").css("left","70"+ "px")
   }
@@ -36,9 +35,6 @@ $(document).on("turbolinks:load", function(){
   // tab削除
   $(".todo_content__tab_wrap__tab_area").on("click", ".delete_tab", function(){
     var title_id = $(this).data("title-id")
-    console.log(title_id)
-    console.log($(`.add${title_id}`).find("div").data("todo-id"))
-
     $.ajax({
       type: 'DELETE',
       dataType: 'json',
@@ -46,10 +42,8 @@ $(document).on("turbolinks:load", function(){
       data: ({"id": title_id}), //idを渡す
     })
     .done(function(){
-      console.log("成功")
       $(`[id="tab-${title_id}"]`).remove() //該当データをremove
       var tab = $(".todo_content__tab_wrap__tab_area").children("a").length //タブのaタグの数を取得
-      console.log(tab)
       if(tab == 0){
         $(".add_tab").css("left","70"+ "px")
         $(".tab_balloon").css("display","block")
@@ -65,10 +59,8 @@ $(document).on("turbolinks:load", function(){
         $(".tab_balloon").css("display","none")
       }
       $(`.todo_content__tab_wrap__tab_area a:first`)[0].click();
-      console.log(this)
     })
     .fail(function(){
-      console.log("失敗")
     })
   })
 })

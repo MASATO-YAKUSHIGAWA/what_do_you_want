@@ -11,16 +11,11 @@ $(function() {
       data: ({"id": todo_id}), //idを渡す
     })
     .done(function(data){
-      console.log("成功")
       $(like).removeClass('fa-heart-o').addClass('fa-heart');
-      console.log(data)
       $(data)
       var next = $(like).next().html(`${data}`)
-      console.log(next)
-
     })
     .fail(function(){
-      console.log("失敗")
     })
   })
 
@@ -35,12 +30,10 @@ $(function() {
       data: ({"id": todo_id}), //idを渡す
     })
     .done(function(data){
-      console.log("成功")
       $(like).removeClass('fa-heart').addClass('fa-heart-o');
       var next = $(like).next().html(`${data}`)
     })
     .fail(function(){
-      console.log("失敗")
     })
   })
 })
