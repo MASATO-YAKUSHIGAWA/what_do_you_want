@@ -9,6 +9,9 @@
         SIGN-UP
   .how_to
     %i.fa.fa-angle-double-down.fa-3x
+  - if flash[:notice]
+    .flash
+      = flash[:notice]
 
 .top-page-2
   .top-page-2__content

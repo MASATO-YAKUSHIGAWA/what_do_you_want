@@ -5,12 +5,14 @@ before_action :set_user, only:[:create]
   end
 
   def create
-    if @user.authenticate(params[:session][:password])
-      sign_in(@user)
-      redirect_to :root
+    if @user
+      if @user.authenticate(params[:session][:password])
+        sign_in(@user)
+        redirect_to :root
+      end
     else
-      flash.now[:danger] = t('.flash.invalid_password')
-      render 'new'
+      flash[:notice] = "Error: passwords or email do not match."
+      redirect_to users_path
     end
   end
 
