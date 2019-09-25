@@ -87,7 +87,7 @@ $(document).on("turbolinks:load", function(){
   var expansion = new ScrollMagic.Scene({
     triggerElement: "#trigger0"
     })
-    .addIndicators({name: "expansion"})
+    
     .addTo(controller)
     .setPin(".link")
 
@@ -99,7 +99,7 @@ $(document).on("turbolinks:load", function(){
     triggerElement: "#trigger1"
     })
     .setTween(tween1)
-    .addIndicators({name: "expansion"})
+    
     .addTo(controller)
 
   var tween2 = TweenMax.to("#trigger2", 0.5, { //説明
@@ -110,7 +110,7 @@ $(document).on("turbolinks:load", function(){
   triggerElement: "#trigger2",
     })
     .setTween(tween2)
-    .addIndicators({name: "expansion"})
+    
     .addTo(controller)
     // .setPin(".link")
 
@@ -122,7 +122,7 @@ $(document).on("turbolinks:load", function(){
   triggerElement: "#trigger3"
     })
     .setTween(tween3)
-    .addIndicators({name: "expansion"})
+    
     .addTo(controller)
 
   var tween4 = TweenMax.to("#trigger4", 0.5, { //実際の画面説明
@@ -133,7 +133,7 @@ $(document).on("turbolinks:load", function(){
   triggerElement: "#trigger4"
     })
     .setTween(tween4)
-    .addIndicators({name: "expansion"})
+    
     .addTo(controller)
 
   var tween5 = TweenMax.to(["#trigger1","#trigger3"], 0.5, { //フェードアウト
@@ -144,7 +144,7 @@ $(document).on("turbolinks:load", function(){
   triggerElement: "#trigger4",
     })
     .setTween(tween5)
-    .addIndicators({name: "expansion"})
+    
     .addTo(controller)
 
   var tween6 = TweenMax.to("#trigger2", 0.5, { //フェードアウト
@@ -155,7 +155,7 @@ $(document).on("turbolinks:load", function(){
   triggerElement: "#trigger4"
     })
     .setTween(tween6)
-    .addIndicators({name: "expansion"})
+    
     .addTo(controller)
 
   var tween7 = TweenMax.to("#trigger5", 0.5, { //フェードアウト
@@ -166,6 +166,6 @@ $(document).on("turbolinks:load", function(){
   triggerElement: "#trigger4"
     })
     .setTween(tween7)
-    .addIndicators({name: "expansion"})
+    
     .addTo(controller)
 })
