@@ -7,6 +7,61 @@
     .link__sign-up
       .link__sign-up__signup_btn
         SIGN-UP
+  .how_to
+    %i.fa.fa-angle-double-down.fa-3x
+
+.top-page-2
+  .top-page-2__content
+    .top-page-2__content__header#trigger0
+    .top-page-2__content__title#trigger1
+      WHAT DO YOU WANT FOR YOUR LIFE?
+    .top-page-2__content__discription#trigger2
+      %p
+        What do you want for your life?
+        %br
+        Let's share the your Bucket List
+        %br 
+        %br
+      %p
+        This app share your Bucket List
+        %br
+        Others will be inspired & support you & your dream
+        %br
+        Don’t you have it or know to create it, right?
+        %br
+        Plz don’t worry, there are three points
+        %p{style: "margin-left: 2em"}
+          1, don’t worry about your appearance
+          %br
+          2, too specific
+          %br
+          3, think about why do you want it
+      %p{style:"font-weight: bold"}
+        You only live once. Might as well enjoy it!!
+    .top-page-2__content__image#trigger3
+    .top-page-2__content__detail#trigger4
+      .top-page-2__content__detail__circle1
+      .top-page-2__content__detail__comment1
+        your dream
+      .top-page-2__content__detail__circle2
+      .top-page-2__content__detail__comment2
+        your bucket list label (addable)
+      .top-page-2__content__detail__circle3
+      .top-page-2__content__detail__comment3
+        your bucket list
+    .top-page-2__content__detail__discription#trigger5
+      %p
+        This is actual screen
+        %br
+        You can make & add bucket list label 
+        %br
+        and that contens
+        %br
+        And then, everyone share these
+        %br
+      %p{style:"font-weight: bold"}
+        Let's start for a better life!
+
 
 .sign_up_modal
   = form_with model: @user, url: users_path, method: :post, id: 'new_user', class: 'new_user',name: "signup",local: true do |f|
