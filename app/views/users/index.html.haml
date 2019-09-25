@@ -9,6 +9,9 @@
         SIGN-UP
   .how_to
     %i.fa.fa-angle-double-down.fa-3x
+  - if flash[:notice]
+    .flash
+      = flash[:notice]
 
 .top-page-2
   .top-page-2__content
@@ -102,7 +105,7 @@
           %p WHAT DO YOU WANT? *
         .sign_up_modal__contents__box__form
           = f.text_field :want,class: "user_form",required:"",placeholder:"I WANNA TRIP ARROUND the WORLD", autofocus: true
-          = f.hidden_field :remember_token
+          = f.hidden_field :remember_token #tokenの保存
       .sign_up_modal__contents__box
         .sign_up_modal__contents__box__title
           SELF-INTRODUCTION
