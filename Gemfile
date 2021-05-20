@@ -83,7 +83,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'omniauth-facebook'
   gem 'omniauth-google-oauth2'
   gem "active_hash"
-  gem 'nokogiri', "1.10.4"
+  gem 'nokogiri', "1.11.4"
   gem "payjp"
   gem "aws-sdk-s3", require: false
   gem 'dotenv-rails'
